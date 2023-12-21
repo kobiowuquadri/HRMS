@@ -1,0 +1,251 @@
+@import "../../variables";
+
+
+
+#closeRegister {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 3.3rem;
+  align-items: center;
+  background: $whiteColor;
+  box-shadow: 0px 4px 16px 0px rgba(0, 16, 63, 0.05);
+  text-align: center;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  #flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    // justify-content: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  #logo {
+    color: $blueColor;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  #redColor {
+    color: $redColor;
+  }
+  #navbar ul {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      font-size: 1.1rem;
+      color: $blackColor;
+      font-weight: 600;
+    }
+
+    li button {
+      padding: 0.65rem 1.2rem;
+      background-color: $blueColor;
+      border: none;
+      border-radius: 0.625rem;
+
+      a {
+        color: $whiteColor;
+      }
+    }
+  }
+  img {
+    cursor: pointer;
+  }
+}
+
+#menuBar {
+  display: none;
+}
+
+#navcard {
+  position: fixed;
+
+  left: -100vw;
+  height: 100%;
+  width: 70%;
+  z-index: 9999;
+  transition: all 0.5s ease-in-out;
+
+  a {
+    text-decoration: none;
+    color: $whiteColor;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+  #register {
+    color: $whiteColor;
+  }
+}
+
+#navcard.show {
+  padding-left: 20px;
+  padding-top: 30px;
+  top: 0;
+  left: 0;
+  background-color: $blueColor;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  align-items: flex-start;
+}
+
+#navcard ul {
+  display: grid;
+  justify-content: left;
+  gap: 30px;
+}
+
+#navcard a {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: $whiteColor;
+}
+
+#close {
+  cursor: pointer;
+}
+
+#register {
+  color: $whiteColor;
+}
+
+#form_container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background-color: $whiteColor;
+  display: none;
+
+  /* 'RAC' logo */
+  h1 {
+    color: #0133ca;
+    padding: 25px;
+    text-align: center;
+    font-family: "Bitter", serif;
+    font-size: 21px;
+    font-weight: 700;
+  }
+  /* 'C' changes to colour red */
+  span {
+    color: red;
+  }
+  h3 {
+    color: #0f1525;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 33px;
+    margin-bottom: 40px;
+  }
+  .details {
+    width: 479px;
+    margin: 32px;
+  }
+  .details p {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding-bottom: 10px;
+  }
+  .input_box {
+    width: 100%;
+    height: auto;
+    padding: 12px 24px 12px 16px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid #675f5f;
+  }
+
+  .remember_password {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 300px;
+    margin-bottom: 30px;
+  }
+  .remember_password a {
+    color: #0133ca;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: none;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    padding-bottom: 40px;
+    margin-top: 15px;
+  }
+  .remember_password a:hover {
+    text-decoration: underline;
+  }
+  /* button div */
+  .btn {
+    padding-left: 30px;
+  }
+  button {
+    width: 480px;
+    border: none;
+    color: white;
+    padding: 16px 36px 15px 36px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 5px;
+    background: #0133ca;
+  }
+  button:hover {
+    background-color: rgba(1, 51, 202, 0.7);
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+  }
+
+  .show {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  #menuBar {
+    display: flex;
+  }
+  #navbar ul a,
+  #navbar button {
+    display: none;
+  }
+
+  .header {
+    padding: 0rem 2rem;
+  }
+  .wrapper {
+    height: 100vh;
+  }
+
+  #closeRegister {
+    right: 20px;
+    top: 25px;
+  }
+  .lightbox {
+    width: 100%;
+    padding: 100px;
+  }
+}

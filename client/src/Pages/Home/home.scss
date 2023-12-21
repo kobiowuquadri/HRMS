@@ -1,0 +1,120 @@
+@import '../../variables';
+
+.home_layout {
+    position: relative;
+    top: 30px;
+    display: flex;
+    gap:50px;
+    width: 100%;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+  
+
+    .home_content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 50%;
+        padding-left: 50px;
+        gap: 30px;
+
+        #crime {
+          color: $redColor;
+        }
+
+        #secure {
+          color:$blueColor;
+        }
+        h1 {
+          font-size: 3rem;
+        }
+
+        p{
+          margin-top: -4%;
+          font-size: 1.5rem;
+        }
+
+        .btns {
+          display: flex;
+          gap: 20px;
+
+          #getStartedBtn {
+            color: $whiteColor;
+            border: none;
+            font-size: 1.2rem;
+            padding: 0.75rem 1.5rem;
+            background: $blueColor;
+            border-radius: 0.3125rem;
+            cursor: pointer;
+          }
+
+          #bookDemo {
+            cursor: pointer;
+            color: $blueColor;
+            font-size: 1.2rem;
+            padding: 0.89138rem 1.88175rem;
+            border: 1px solid $blueColor;
+            border-radius: 0.3125rem;
+          }
+        }
+
+       
+    }
+
+  
+
+}
+
+.home_image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width:768px){
+  .home_layout{
+    flex-direction: column;
+     top: 0px;
+
+    .home_content{
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+
+      .btns{
+        justify-content: flex-start;
+        // position: relative;
+        // left: -12%;
+        width: 100%;
+
+        #getStartedBtn{
+          font-size: .9rem;
+        }
+
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+    }
+
+    .home_image{
+      display: none;
+    }
+  }
+
+
+}
