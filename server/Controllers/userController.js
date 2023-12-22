@@ -35,7 +35,7 @@ const userLogin = async (req, res) => {
      if(!isPassword) {
         re.staus(402).json({success: false, message: "Incorrect Password"})
      }
-     jwt.sign({id: isUser._id}, process.env.SECRET, async(token, err)=> {
+     jwt.sign({id: isUser._id}, process.env.SECRET,  async(token, err)=> {
          if (err){
             throw new Error(err)
          }
