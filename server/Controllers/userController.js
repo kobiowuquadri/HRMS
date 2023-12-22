@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 
-const period = 1000 * 60 * 60 * 3
+const period = 1000 * 60 * 60 * 24  * 3
 
 const userRegister = async (req, res) => {
    try{
@@ -20,35 +20,49 @@ const userRegister = async (req, res) => {
     res.status(201).json({success: true, message: "User Created Successfully", savedUser})
    }
    catch(err){
-    console.log(err.message)
+      console.error(err);
+      res.status(404).json({
+        success: false,
+        msg: err.message,
+      });
    }
 }
 
 const userLogin = async (req, res) => {
    try {
      const {email, password} = req.body
-     const isUser = await userModel.finOne({email})
+     const isUser = await userModel.findOne({email})
      if(!isUser){
-        res.status(402).json({success: false, message: "User not found!"})
+        res.status(401).json({success: false, message: "User not found!"})
      }
      const isPassword = await bcrypt.compare(password, isUser.password)
      if(!isPassword) {
-        re.staus(402).json({success: false, message: "Incorrect Password"})
+        re.staus(401).json({success: false, message: "Incorrect Password"})
      }
-     jwt.sign({id: isUser._id}, process.env.SECRET,  async(token, err)=> {
+     jwt.sign({id: isUser._id}, process.env.SECRET, {expiresIn: '1d'}, async(err, token)=> {
          if (err){
             throw new Error(err)
          }
-
+         res.cookie('userId', isUser._id, {maxAge: period, httpOnly: true})
+         res.status(200).json({
+            success: true,
+            message: "User Login Successfully",
+            isUser
+         })
          
      })
 
    }
 
    catch(err){
-      
+      console.error(err);
+      res.status(404).json({
+        success: false,
+        message: err.message,
+      });
    }
 }
 
+userModel.countDocuments()
 
 module.exports = {userRegister, userLogin}
