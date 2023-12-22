@@ -69,8 +69,8 @@ function Register() {
                 <div className='d-flex flex-row align-items-center mb-4'>
                   <MDBIcon fas icon='lock me-3' size='lg' />
                   <MDBInput
-                    label='Current Job'
-                    name='text'
+                    label='Current Job Title'
+                    name='jobTitle'
                     id='form3'
                     type='text'
                   />
@@ -79,7 +79,7 @@ function Register() {
                   <MDBIcon fas icon='lock me-3' size='lg' />
                   <MDBInput
                     label='Description'
-                    name='description'
+                    name='jobDescription'
                     id='form3'
                     type='text'
                   />
@@ -93,17 +93,29 @@ function Register() {
                     type='text'
                   />
                 </div>
+
+                <div className='d-flex flex-row align-items-center mb-4'>
+                  <MDBIcon fas icon='lock me-3' size='lg' />
+                  <MDBInput
+                    label='Phone Number'
+                    name='phoneNumber'
+                    id='form3'
+                    type='number'
+                  />
+                </div>
   
 
                 <div className='d-flex flex-row align-items-center mb-4'>
                   <MDBIcon fas icon='lock me-3' size='lg' />
                   <MDBInput
                     label='Date of Birth'
-                    name='password'
+                    name='DOB'
                     id='form3'
                     type='date'
                   />
                 </div>
+
+              
 
                 <MDBBtn
                   className='mb-4'
