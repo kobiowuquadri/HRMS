@@ -63,6 +63,5 @@ const userLogin = async (req, res) => {
    }
 }
 
-userModel.countDocuments()
 
 module.exports = {userRegister, userLogin}
