@@ -13,11 +13,23 @@ import {
   MDBInput,
   MDBIcon
 } from 'mdb-react-ui-kit'
-// import { signInCustomer } from '../../../../Hooks/Api/userApi'
-
+import { userLogin } from '../../API/apiCalls'
 
 
 function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
+
+  const handleLogin = async () => {
+  
+    await userLogin({
+      email,
+      password
+    })
+    navigate('/dashboard')
+  }
   
     return (
       <MDBContainer
@@ -43,6 +55,8 @@ function Login() {
                     name='email'
                     id='form2'
                     type='email'
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                   />
                 </div>
   
@@ -53,6 +67,8 @@ function Login() {
                     name='password'
                     id='form3'
                     type='password'
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
                   />
                 </div>
   
@@ -60,6 +76,7 @@ function Login() {
                   className='mb-4'
                   size='lg'
                   style={{ backgroundColor: '#0174BE' }}
+                  onClick={handleLogin}
                 >
                   Login
                 </MDBBtn>
