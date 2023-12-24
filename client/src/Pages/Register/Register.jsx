@@ -13,6 +13,8 @@ import {
   MDBIcon
 } from 'mdb-react-ui-kit'
 import { userRegister } from '../../API/apiCalls'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Register () {
   const [email, setEmail] = useState('')
@@ -38,6 +40,7 @@ function Register () {
       phoneNumber,
       DOB
     })
+    toast.success("Registration Successfully")
     navigate('/login')
   }
 

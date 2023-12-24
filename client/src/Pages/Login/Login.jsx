@@ -14,6 +14,8 @@ import {
   MDBIcon
 } from 'mdb-react-ui-kit'
 import { userLogin } from '../../API/apiCalls'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function Login() {
@@ -28,6 +30,7 @@ function Login() {
       email,
       password
     })
+    toast.success("Login Successfully")
     navigate('/dashboard')
   }
   
