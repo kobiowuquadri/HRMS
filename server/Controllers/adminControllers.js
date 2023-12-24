@@ -66,6 +66,7 @@ const adminRegister = async (req, res) => {
     }
  }
 
+// Addmin create Jobs
 
  const adminCreateJobs = async (req, res) => {
     try{
@@ -85,6 +86,42 @@ const adminRegister = async (req, res) => {
     }
  }
 
+//  list all jobs
+
+const allJobs = async (req, res) => {
+   try {
+      const jobs = await jobsModel.find()
+      res.status(200).json({success: true, message: "View allJobs Successful", jobs})
+   
+   }
+   catch(err){
+      console.error(err);
+      res.status(404).json({
+        success: false,
+        msg: err.message,
+      });
+   }
+}
+
+
+// total jobs
+const totalJobs = async (req, res) => {
+   try {
+      const jobsCount = await jobsModel.countDocuments()
+      res.status(200).json({success: true, message: "Total Jobs Successful", jobsCount})
+   }
+   catch(err){
+      console.error(err);
+      res.status(404).json({
+        success: false,
+        msg: err.message,
+      });
+   }
+}
+
+
+
+
 //  total users
 
 const getAllUsers = async (req, res) => {
@@ -102,5 +139,5 @@ const getAllUsers = async (req, res) => {
 }
 
 
- module.exports = {adminRegister, adminLogin, adminCreateJobs, getAllUsers}
+ module.exports = {adminRegister, adminLogin, adminCreateJobs, getAllUsers, allJobs, totalJobs}
  
