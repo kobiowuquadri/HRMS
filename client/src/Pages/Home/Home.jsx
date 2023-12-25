@@ -4,6 +4,7 @@ import './home.scss'
 import bgImage from '../../assets/home_bg.jpeg'
 import Footer from '../../Components/Footer/Footer'
 import About from '../../Components/About/About'
+import Jobs from '../../Components/Jobs/Jobs'
 
 function Home () {
   return (
@@ -30,6 +31,7 @@ function Home () {
         </div>
       </div>
       <About/>
+      <Jobs/>
       <Footer />
     </div>
   )

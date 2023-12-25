@@ -20,3 +20,7 @@ export const userLogin = async (payload) => {
   //  console.log(response)
    return response
 }
+
+
+// Admin API
+
