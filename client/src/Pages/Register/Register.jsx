@@ -15,6 +15,7 @@ import {
 import { userRegister } from '../../API/apiCalls'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Link } from 'react-router-dom'
 
 function Register () {
   const [email, setEmail] = useState('')
@@ -58,7 +59,7 @@ function Register () {
               className='order-2 order-lg-1 d-flex flex-column align-items-center'
             >
               <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>
-                Register
+                Sign Up
               </p>
               {/* <form onSubmit={handleRegister}> */}
                 <div className='d-flex flex-row align-items-center mb-4'>
@@ -160,11 +161,12 @@ function Register () {
                   style={{ backgroundColor: '#0174BE' }}
                   onClick={handleRegister}
                 >
-                  Register
+                  Sign Up
                 </MDBBtn>
               {/* </form> */}
+              <p>Already have an account? <Link to={'/login'}>Login</Link></p>
             </MDBCol>
-
+           
             <MDBCol
               md='10'
               lg='6'
