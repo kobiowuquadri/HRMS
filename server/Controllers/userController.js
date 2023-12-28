@@ -1,6 +1,8 @@
 const userModel = require('../Models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const nodemailer = require('nodemailer')
+const appForJobsModel = require('../Models/applyForJbs')
 
 
 const period = 1000 * 60 * 60 * 24  * 3
@@ -17,6 +19,33 @@ const userRegister = async (req, res) => {
         email, name, password: hashPassword, currentJob, jobDescription, qualification, DOB, phoneNumber
     })
     const savedUser = await newUser.save()
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.USER,
+        pass: process.env.PASSWORD
+      },
+      from: "kobiowuq@gmail.com"
+    });
+
+    const info = await transporter.sendMail({
+      from: '"DHireventures 👻" <kobiowuq@gmail.com>', // sender address
+      to: email, // list of receivers
+      subject: "Account Created Successfully", // Subject line
+      html: `
+      <p>Hello ${name},</p>
+      <p>Your account has been created successfully.</p>
+      <p>So, you can now proceed with other processes</p>
+  `
+    });
+  
+    console.log("Message sent: %s", info.messageId);
+
+
     res.status(201).json({success: true, message: "User Created Successfully", savedUser})
    }
    catch(err){
@@ -63,9 +92,35 @@ const userLogin = async (req, res) => {
    }
 }
 
+const applyForJobs = async (req, res) => {
+   try {
+      const resume = req.file
+      const {address, coverLetter} = req.body
+      const newApplication = appForJobsModel({
+      address, 
+      resume: resume.path,
+      coverletter
+   })
+   const savedApplication = await newApplication.save()
+   res.status(202).json({success: true, message: "Application Submitted Successfully", pending: true, savedApplication})
+   }
+   catch(err){
+      console.error(err);
+      res.status(404).json({
+        success: false,
+        message: err.message,
+      });
+   }
+}
 
 
 
 
+const logout = async (req, res) => {
+   res.cookie("token", "", {maxAge: 0})
+   res.redirect('/login')
+}
 
-module.exports = {userRegister, userLogin}
+
+
+module.exports = {userRegister, userLogin, logout, applyForJobs}
