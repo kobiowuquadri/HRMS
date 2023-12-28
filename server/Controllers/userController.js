@@ -99,7 +99,7 @@ const applyForJobs = async (req, res) => {
       const newApplication = appForJobsModel({
       address, 
       resume: resume.path,
-      coverletter
+      coverLetter
    })
    const savedApplication = await newApplication.save()
    res.status(202).json({success: true, message: "Application Submitted Successfully", pending: true, savedApplication})
