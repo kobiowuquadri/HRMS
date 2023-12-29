@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../../Components/Header/Header'
 import './home.scss'
-import bgImage from '../../assets/home_bg.jpeg'
+import bgImage from '../../assets/bg.jpg'
 import Footer from '../../Components/Footer/Footer'
 import About from '../../Components/About/About'
 import Jobs from '../../Components/Jobs/Jobs'

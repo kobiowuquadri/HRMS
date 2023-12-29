@@ -33,7 +33,7 @@ const Sidebar = () =>  {
 
   const handleLogout = () => {
     localStorage.removeItem('adminAccessToken'); 
-    navigate('/customer'); 
+    navigate('/dashboard'); 
   };
 
   return (
@@ -42,14 +42,14 @@ const Sidebar = () =>  {
         <div className="position-sticky">
           <MDBListGroup flush className="mx-3 mt-4">
             <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='/customer/dashboard' action active style={{backgroundColor:"green"}} className='border-0 border-bottom rounded rounded'>
+              <MDBListGroupItem tag='a' href='/dashboard' action active style={{backgroundColor:"#0174BE"}} className='border-0 border-bottom rounded rounded'>
                 <MDBIcon fas icon="tachometer-alt me-3" />
                 Profile
               </MDBListGroupItem>
             </MDBRipple>
 
             <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='/customer/transfer' action className='border-0 border-bottom rounded'   aria-current='true'>
+              <MDBListGroupItem tag='a' href='/dashboard/jobs' action className='border-0 border-bottom rounded'   aria-current='true'>
                 <MDBIcon fas icon="chart-area me-3" />
                 Jobs
               </MDBListGroupItem>
@@ -81,22 +81,19 @@ const Sidebar = () =>  {
               <MDBIcon icon='bars' fas />
             </MDBNavbarToggler>
             <MDBNavbarBrand href='#'>
-             <Link to='/'>
-             <img
-                src={logoIcon}
-                height='30'
-                alt=''
-                loading='lazy'
-              />
+             <Link to='/' className='fs-3 fw-bold'>
+
+          DHireventures
+
              </Link>
             </MDBNavbarBrand>
 
-            <MDBCollapse navbar>
+            {/* <MDBCollapse navbar>
               <MDBNavbarItem className="d-flex align-items-center">
                 <MDBInput label='Search (ctrl + "/" to focus)' id='form1' type='text' />
                 <MDBIcon fas icon="search mx-2" />
               </MDBNavbarItem>
-            </MDBCollapse>
+            </MDBCollapse> */}
 
 
           </MDBNavbarNav>

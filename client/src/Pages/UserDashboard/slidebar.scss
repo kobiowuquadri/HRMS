@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .board {
     width: 100%;
     position: relative;
@@ -5,8 +7,8 @@
   
   .main__board {
     width: 80%;
-    background-color: green;
-    color: white;
+    background-color: $blueColor;
+    // color: white;
     position: absolute;
     right: 0;
     padding: 20px;
