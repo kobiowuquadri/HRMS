@@ -21,6 +21,15 @@ export const userLogin = async (payload) => {
    return response
 }
 
+// Submit Application
+
+export const applyForJob = async (payload) => {
+  const response = await axios.post('http://localhost:5000/api/v1/user-apply', payload, {
+    withCredentials: true
+  })
+  return response 
+}
+
 
 // Admin API
 

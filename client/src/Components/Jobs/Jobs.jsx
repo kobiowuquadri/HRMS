@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function Jobs () {
   const [jobs, getJobs] = useState([])
@@ -32,9 +33,9 @@ function Jobs () {
                 <li>{job.startDate}</li>
                 <li>{job.endDate}</li>
               </ul>
-              <a href='#' className='btn btn-primary'>
+              <Link to={'/dashboard/applyforjob'} className='btn btn-primary'>
                 Apply Now
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import Register from './Pages/Register/Register'
 import Dashboard from './Pages/UserDashboard/Dashboard'
 import { ToastContainer } from 'react-toastify'
 import ViewJobs from './Pages/UserDashboard/ViewJobs'
+import Apply from './Pages/UserDashboard/Apply'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/dashboard' element={<Outlet />}>
             <Route index element={<Dashboard/>}></Route>
             <Route path='jobs' element={<ViewJobs />}></Route>
+            <Route path='applyforjob' element={<Apply />}></Route>
           </Route>
       </Routes>
     </>
