@@ -97,7 +97,8 @@ const userLogin = async (req, res) => {
         res.status(200).json({
           success: true,
           message: 'User Login Successfully',
-          isUser
+          isUser,
+          token
         })
       }
     )
@@ -114,7 +115,6 @@ const applyForJobs = async (req, res) => {
   try {
     const { address, coverLetter } = req.body
 
-    // Convert the resume buffer to a base64 string
     const resumeBuffer = req.file.buffer
     const resumeBase64 = resumeBuffer.toString('base64')
 
