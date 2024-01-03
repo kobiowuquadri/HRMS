@@ -1,19 +1,29 @@
 import React from 'react'
-import bgImage from '../../assets/about_bg.jpeg'
+import bgImage from '../../assets/team_images.jpeg'
 import './about.scss'
 
-
-
-function About() {
+function About () {
   return (
-    <div id='about' className='about_me d-flex align-items-center justify-content-between px-5'>
+    <div
+      id='about'
+      className='p-5'
+    >
+      <h4 className='display-6 fw-bold text-center p-2'>About DHireventures</h4>
+      <div className='about_me d-flex align-items-center gap-5 justify-content-between'>
         <div className='col'>
-            <h1 className='display-5 fw-bold'>About DHireventures</h1>
-            <p className='fs-4'>Welcome to DHireventures, where we redefine the future of hiring and job hunting through innovation, efficiency, and seamless user experiences. Our platform serves as a dynamic and centralized hub, empowering both job seekers and HR administrators to navigate the evolving landscape of talent acquisition effortlessly.</p>
+          <p className='fs-4'>
+            Welcome to DHireventures, where we redefine the future of hiring and
+            job hunting through innovation, efficiency, and seamless user
+            experiences. Our platform serves as a dynamic and centralized hub,
+            empowering both job seekers and HR administrators to navigate the
+            evolving landscape of talent acquisition effortlessly.
+          </p>
+          <button className='btn btn-primary'>Join Us</button>
         </div>
         <div className='col '>
-            <img src={bgImage} className='img-fluid' alt="" />
+          <img src={bgImage} className='img-fluid' alt='' />
         </div>
+      </div>
     </div>
   )
 }

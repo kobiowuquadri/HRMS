@@ -1,5 +1,8 @@
 @import "../../variables";
 
+*{
+  font-family: cursive;
+}
 
 
 #closeRegister {
@@ -23,6 +26,7 @@
   top: 0;
   right: 0;
   left: 0;
+  height: 70px;
 
   #flex {
     display: flex;
@@ -36,7 +40,7 @@
   }
   #logo {
     color: $blueColor;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-style: normal;
     font-weight: 800;
   }
@@ -57,6 +61,10 @@
       font-weight: 600;
     }
 
+    a:hover {
+      transition: all .3s ease-in-out;
+      color: $blueColor;
+    }
     li button {
       padding: 0.65rem 1.2rem;
       background-color: $blueColor;
