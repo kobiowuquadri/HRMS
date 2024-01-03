@@ -22,10 +22,10 @@ function Header() {
         <img id="close" src={closeIcon} onClick={() => setToggle(false)}></img>
         <ul>
           <Link to="/about">
-            <a href="#">About</a>
+            <a href="#about">About</a>
           </Link>
           <li>
-            <a href="#">Contact Us</a>
+            <a href="#contact">Contact Us</a>
           </li>
           <Link to={'/register'}>
                 Register

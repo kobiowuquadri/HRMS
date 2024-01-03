@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import loginBg from '../../assets/login_bg.jpeg'
+import loginBg from '../../assets/team_images.jpeg'
 import { useNavigate } from 'react-router-dom'
 import {
   MDBBtn,
@@ -16,6 +16,7 @@ import { userRegister } from '../../API/apiCalls'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Link } from 'react-router-dom'
+import './register.scss'
 
 function Register () {
   const [email, setEmail] = useState('')
@@ -47,6 +48,7 @@ function Register () {
 
   return (
     <MDBContainer
+     id='register_user'
       fluid
       className='d-flex min-vh-100 align-items-center justify-content-center'
     >
@@ -55,7 +57,8 @@ function Register () {
           <MDBRow>
             <MDBCol
               md='10'
-              lg='6'
+              lg='10'
+              style={{width: "500px"}}
               className='order-2 order-lg-1 d-flex flex-column align-items-center'
             >
               <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>
@@ -172,7 +175,7 @@ function Register () {
               lg='6'
               className='order-1 order-lg-2 d-flex align-items-center'
             >
-              <MDBCardImage src={loginBg} fluid />
+              {/* <MDBCardImage src={loginBg} fluid /> */}
             </MDBCol>
           </MDBRow>
         </MDBCardBody>

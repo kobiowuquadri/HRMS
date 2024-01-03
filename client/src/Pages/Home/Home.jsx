@@ -7,6 +7,7 @@ import About from '../../Components/About/About'
 import Jobs from '../../Components/Jobs/Jobs'
 import { TypeAnimation } from 'react-type-animation'
 import { Link } from 'react-router-dom'
+import Team from '../../Components/Team/Team'
 
 function Home () {
   return (
@@ -20,10 +21,10 @@ function Home () {
               sequence={[
                 'Job Hunting...', // Types 'One'
                 1000, // Waits 1s
-                'Explore', // Deletes 'One' and types 'Two'
-                3000, // Waits 2s
+                'Exploration...', // Deletes 'One' and types 'Two'
+                2000, // Waits 2s
                 'Career Advancement...', // Types 'Three' without deleting 'Two'
-                5000,
+                3000,
                 () => {
                   console.log('Sequence completed')
                 }
@@ -49,6 +50,7 @@ function Home () {
       </div>
       <About />
       <Jobs />
+      <Team/>
       <Footer />
     </div>
   )

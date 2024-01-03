@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom'
 
 export default function Footer () {
   return (
-    <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
-      <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
+    <MDBFooter bgColor='light' id='contact' className='text-center text-lg-start text-muted'>
+      <section className='d-flex justify-content-center justify-content-lg-between px-5 py-4 border-bottom'>
         <div className='me-5 d-none d-lg-block'>
           <span>Get connected with us on social networks:</span>
         </div>
@@ -38,7 +38,7 @@ export default function Footer () {
         </div>
       </section>
 
-      <section className=''>
+      <section className='m-0 p-0'>
         <MDBContainer className='text-center text-md-start mt-5'>
           <MDBRow className='mt-3'>
             <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4'>
