@@ -1,6 +1,7 @@
 import React from 'react'
 import bgImage from '../../assets/team_images.jpeg'
 import './about.scss'
+import { Link } from 'react-router-dom'
 
 function About () {
   return (
@@ -18,7 +19,7 @@ function About () {
             empowering both job seekers and HR administrators to navigate the
             evolving landscape of talent acquisition effortlessly.
           </p>
-          <p style={{display: 'flex', justifyContent:"center"}}><button className='btn btn-primary fs-6 btn-blue text-white'>Join Us</button></p>
+          <p style={{display: 'flex', justifyContent:"center"}}><button className='btn btn-primary fs-6 btn-blue text-white'><Link to={'/login'} className='text-white'>Get Hired</Link></button></p>
         </div>
         <div className='col'>
           <img src={bgImage} className='img-fluid' alt='' />

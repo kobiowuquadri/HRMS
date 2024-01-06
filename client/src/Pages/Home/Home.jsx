@@ -49,7 +49,7 @@ function Home () {
         </div> */}
       </div>
       <About />
-      <Jobs />
+      {/* <Jobs /> */}
       <Team/>
       <Footer />
     </div>

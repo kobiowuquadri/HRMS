@@ -58,7 +58,7 @@ function Dashboard () {
                     />
                     <p className='text-muted mb-1'>{user.currentJob}</p>
                     <p className='text-muted mb-4'>
-                      No 22, Canada Ontario.
+                      House 10, Canada Ontario.
                     </p>
                     {/* <div className='d-flex justify-content-center mb-2'>
                       <MDBBtn>Follow</MDBBtn>

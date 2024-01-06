@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 import './slidebar.scss'
 import {
@@ -23,17 +23,19 @@ import {
   MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import logoIcon from '../../assets/logo.svg'
+import UserContext from '../../Context/userContext';
 
 
 const Sidebar = () =>  {
   const [showShow, setShowShow] = useState(false);
+  const {logout} = useContext(UserContext)
 
   const toggleShow = () => setShowShow(!showShow);
   const navigate = useNavigate()
 
-  const handleLogout = () => {
-    localStorage.removeItem('adminAccessToken'); 
-    navigate('/dashboard'); 
+  const handleLogout = async () => {
+    await logout()
+    navigate('/login'); 
   };
 
   return (
@@ -42,26 +44,24 @@ const Sidebar = () =>  {
         <div className="position-sticky">
           <MDBListGroup flush className="mx-3 mt-4">
             <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='/dashboard' action active style={{backgroundColor:"#0174BE"}} className='border-0 border-bottom rounded rounded'>
+              <MDBListGroupItem active style={{backgroundColor:"#0174BE"}} className='border-0 border-bottom rounded rounded'>
                 <MDBIcon fas icon="tachometer-alt me-3" />
-                Profile
+                <Link to={'/dashboard'}>Profile</Link>
               </MDBListGroupItem>
             </MDBRipple>
 
             <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='/dashboard/jobs' action className='border-0 border-bottom rounded'   aria-current='true'>
+              <MDBListGroupItem className='border-0 border-bottom rounded'>
                 <MDBIcon fas icon="chart-area me-3" />
-                Jobs
+                 <Link to='/jobs'>Jobs</Link>
               </MDBListGroupItem>
             </MDBRipple>
-            <MDBRipple rippleTag='span' onClick={handleLogout}>
+            <MDBRipple rippleTag='span' style={{color: 'red', cursor: 'pointer'}}>
               <MDBListGroupItem
-                tag='a'
-                action
                 className='border-0 rounded'
-                
+                onClick={handleLogout}
               >
-                <MDBIcon fas icon='money-bill me-3' style={{color: 'red'}} />
+                <MDBIcon fas icon='money-bill me-3' />
                  Logout
               </MDBListGroupItem>
             </MDBRipple>

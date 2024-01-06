@@ -23,9 +23,10 @@ function App () {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route element={<ProtectedRoutes />}>
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/jobs' element={<ViewJobs />} />
-          <Route path='/applyforjob' element={<Apply />} />
+          <Route path='/dashboard' element={<Dashboard />}>
+            <Route path='jobs' element={<ViewJobs />} />
+            <Route path='applyforjob' element={<Apply />} />
+          </Route>
         </Route>
       </Routes>
     </>
