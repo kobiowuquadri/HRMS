@@ -36,7 +36,7 @@ function Home () {
             />
           </h1>
           <p>
-            DHireventures is a mobile-optimized platform for seamless hiring and
+            DeHireventures is a mobile-optimized platform for seamless hiring and
             job hunting, offering easy search, application, and profile creation
             for <em  style={{ color: '#0174BE'}}>job seekers</em> and &nbsp; <em  style={{ color: '#0174BE'}}>HR administrators.</em>
           </p>

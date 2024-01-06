@@ -44,10 +44,10 @@ export default function Footer () {
             <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
                 <MDBIcon icon='gem' className='me-3' />
-                DHireventures
+                DeHireventures
               </h6>
               <p>
-                DHireventures is a mobile-optimized platform for seamless hiring
+                DeHireventures is a mobile-optimized platform for seamless hiring
                 and job hunting, offering easy search, application, and profile
                 creation for job seekers and HR administrators.
               </p>
@@ -109,7 +109,7 @@ export default function Footer () {
               </p>
               <p>
                 <MDBIcon icon='envelope' className='me-3' />
-                DHireventures@example.com
+                DeHireventures@example.com
               </p>
               <p>
                 <MDBIcon icon='phone' className='me-3' /> + 01 234 567 88
@@ -128,7 +128,7 @@ export default function Footer () {
       >
         © 2023 Copyright:
         <a className='text-reset fw-bold' href='#'>
-          DHireventures
+          DeHireventures
         </a>
       </div>
     </MDBFooter>

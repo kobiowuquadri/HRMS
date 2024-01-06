@@ -19,6 +19,9 @@ import {
 } from 'mdb-react-ui-kit'
 import UserContext from '../../Context/userContext'
 import profileImage from '../../assets/profileImage.png'
+import { TypeAnimation } from 'react-type-animation'
+import { Outlet } from 'react-router-dom';
+
 
 function Dashboard () {
   const { user } = useContext(UserContext)
@@ -28,7 +31,20 @@ function Dashboard () {
     <div className='board'>
       <Sidebar />
       <div className='main__board'>
-        <h1 className='text-white'>Hey, Welcome! {user.name}</h1>
+        <h1 className='text-white'>Hey, Welcome! 
+        <TypeAnimation
+              sequence={[
+                user.name,
+                1000,
+                " ",
+                2000
+              ]}
+              wrapper='span'
+              cursor={true}
+              repeat={Infinity}
+              style={{ color: '#fff', textAlign: 'center' }}
+            />
+        </h1>
         <section style={{ backgroundColor: '#eee' }}>
           <MDBContainer className='py-5'>
             {/* <MDBRow>
@@ -177,6 +193,7 @@ function Dashboard () {
           </MDBContainer>
         </section>
       </div>
+      <Outlet />
     </div>
   )
 }

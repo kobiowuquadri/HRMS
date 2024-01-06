@@ -9,8 +9,14 @@ import { ToastContainer } from 'react-toastify'
 import ViewJobs from './Pages/UserDashboard/ViewJobs'
 import Apply from './Pages/UserDashboard/Apply'
 import ProtectedRoutes from './Utils/ProtectedRoutes'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function App () {
+  useEffect(() => {
+    AOS.init({ duration: 2000 })
+  }, [])
+
   return (
     <>
       <ToastContainer
@@ -22,11 +28,10 @@ function App () {
         <Route index element={<Home />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
-        <Route element={<ProtectedRoutes />}>
-          <Route path='/dashboard' element={<Dashboard />}>
-            <Route path='jobs' element={<ViewJobs />} />
-            <Route path='applyforjob' element={<Apply />} />
-          </Route>
+        <Route path='/dashboard' element={<ProtectedRoutes />}>
+          <Route index element={<Dashboard />}></Route>
+          <Route path='jobs' element={<ViewJobs />} />
+          <Route path='applyforjob' element={<Apply />} />
         </Route>
       </Routes>
     </>
