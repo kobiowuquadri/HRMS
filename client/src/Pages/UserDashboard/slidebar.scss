@@ -7,7 +7,9 @@
   
   .main__board {
     width: 80%;
-    background-color: $blueColor;
+    background: url('../../../src/assets/team_images.jpeg');
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: multiply;
     // color: white;
     position: absolute;
     right: 0;

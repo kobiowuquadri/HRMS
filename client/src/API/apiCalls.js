@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { useContext } from 'react'
+import UserContext from '../Context/userContext'
 
 export const userRegister = async payload => {
   const response = await axios.post(
@@ -22,7 +24,10 @@ export const userLogin = async payload => {
   )
   console.log(response?.data)
   const { token } = response.data
-  localStorage.setItem('userToken', JSON.stringify({token}))
+  localStorage.setItem('userToken', JSON.stringify(token))
+
+  const isUser = JSON.parse(localStorage.getItem("userToken"));
+  console.log(isUser)
   return response
 }
 

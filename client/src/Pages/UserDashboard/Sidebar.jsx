@@ -81,7 +81,7 @@ const Sidebar = () =>  {
               <MDBIcon icon='bars' fas />
             </MDBNavbarToggler>
             <MDBNavbarBrand href='#'>
-             <Link to='/' className='fs-3 fw-bold'>
+             <Link to='/' className='fs-3 fw-bold' style={{color: '#0174BE'}}>
 
           DHireventures
 

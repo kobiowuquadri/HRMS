@@ -36,12 +36,10 @@ function Header() {
         </ul>
       </div>
 
-      <header className="header">
-        <span id="flex">
-          <a id="logo" href="">
+      <header className="header_home">
+          <a id="logo" href="/">
           DHireventures
           </a>
-        </span>
 
         <nav id="navbar">
           <ul>
