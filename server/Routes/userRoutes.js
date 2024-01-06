@@ -1,6 +1,6 @@
 const express = require('express')
 const userRouter = express.Router()
-const {userRegister, userLogin, logout, applyForJobs, viewAppliedJobs} = require('../Controllers/userController')
+const {userRegister, userLogin, allJobs, logout, applyForJobs, viewAppliedJobs} = require('../Controllers/userController')
 const multer = require('multer')
 const authorizedUser = require('../Middlewares/userMiddleware')
 
@@ -14,6 +14,13 @@ const upload = multer({ storage});
 userRouter.post('/user-register', userRegister)
 // User login
 userRouter.post('/user-login', userLogin)
+
+// All Jobs
+userRouter.get('/all-jobs', authorizedUser, allJobs)
+
+// Logout
+userRouter.post('/user-logout', logout)
+
 // User Application
 userRouter.post('/user-apply', authorizedUser, upload.single('resume'),  applyForJobs)
 

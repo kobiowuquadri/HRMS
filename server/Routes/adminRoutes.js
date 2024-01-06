@@ -1,6 +1,6 @@
 const express = require('express')
 const adminRouter = express.Router()
-const {adminRegister, adminLogin,adminCreateJobs, getAllUsers, allJobs, totalJobs} = require('../Controllers/adminControllers')
+const {adminRegister, adminLogin,adminCreateJobs, getAllUsers, totalJobs} = require('../Controllers/adminControllers')
 
 // Routes
 // User register
@@ -17,7 +17,7 @@ adminRouter.post('/create-jobs', adminCreateJobs)
 
 
 // Get All Jobs
-adminRouter.get('/all-jobs', allJobs)
+// adminRouter.get('/all-jobs', allJobs)
 
 // Get All Jobs
 adminRouter.get('/total-jobs', totalJobs)

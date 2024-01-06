@@ -127,6 +127,23 @@ const userLogin = async (req, res) => {
   }
 }
 
+//  list all jobs
+
+const allJobs = async (req, res) => {
+  try {
+     const jobs = await jobsModel.find()
+     res.status(200).json({success: true, message: "View allJobs Successful", jobs})
+  
+  }
+  catch(err){
+     console.error(err);
+     res.status(404).json({
+       success: false,
+       msg: err.message,
+     });
+  }
+}
+
 const applyForJobs = async (req, res) => {
   try {
     const { address, coverLetter } = req.body
@@ -172,8 +189,8 @@ const viewAppliedJobs = async (req, res) => {
 }
 
 const logout = async (req, res) => {
-  res.cookie('token', '', { maxAge: 0 })
-  res.redirect('/login')
+  res.cookie('userId', '', { maxAge: 0, httpOnly: true })
+  res.status(200).json({success: true, message: 'Logged out successfully'})
 }
 
-module.exports = { userRegister, userLogin, logout, applyForJobs, viewAppliedJobs }
+module.exports = { userRegister, userLogin, logout, applyForJobs, viewAppliedJobs, allJobs }
