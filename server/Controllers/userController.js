@@ -6,6 +6,19 @@ const appForJobsModel = require('../Models/applyForJbs')
 
 const period = 1000 * 60 * 60 * 24 * 3
 
+const handleErrors = (err)=> {
+  console.log(err.message, err.code)
+  let error = {email: "", password: ""}
+
+  // validation errors
+  if(err.message.includes("usermodels validation failed")){
+    console.log(Object.values(err.errors).forEach(({properties}) => {
+      error[properties.path] = properties.message
+    }))
+  }
+  return error
+}
+
 const userRegister = async (req, res) => {
   try {
     const {
@@ -18,12 +31,15 @@ const userRegister = async (req, res) => {
       DOB,
       phoneNumber
     } = req.body
-    const hashPassword = await bcrypt.hash(password, 10)
     const existingUser = await userModel.findOne({ email })
     if (existingUser) {
       return res
-        .status(409)
-        .json({ sucess: false, message: 'Email already in use' })
+      .status(409)
+      .json({ sucess: false, message: 'Email already in use' })
+    }
+    let hashPassword;
+    if (password) {
+      hashPassword = await bcrypt.hash(password, 10)
     }
     const newUser = userModel({
       email,
@@ -66,10 +82,10 @@ const userRegister = async (req, res) => {
       .status(201)
       .json({ success: true, message: 'User Created Successfully', savedUser })
   } catch (err) {
-    console.error(err)
-    res.status(404).json({
+   const errors = handleErrors(err)
+    res.status(422).json({
       success: false,
-      msg: err.message
+      errors
     })
   }
 }
@@ -83,7 +99,7 @@ const userLogin = async (req, res) => {
     }
     const isPassword = await bcrypt.compare(password, isUser.password)
     if (!isPassword) {
-      re.staus(401).json({ success: false, message: 'Incorrect Password' })
+      res.status(401).json({ success: false, message: 'Incorrect Password' })
     }
     jwt.sign(
       { id: isUser._id },
@@ -104,7 +120,7 @@ const userLogin = async (req, res) => {
     )
   } catch (err) {
     console.error(err)
-    res.status(404).json({
+    res.status(400).json({
       success: false,
       message: err.message
     })
