@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
 const appForJobsModel = require('../Models/applyForJbs')
+const jobsModel = require('../Models/createJobs')
 
 const period = 1000 * 60 * 60 * 24 * 3
 
