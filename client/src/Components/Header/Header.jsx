@@ -3,13 +3,14 @@ import menuIcon from '../.././assets/icon-menu.svg'
 import closeIcon from '../.././assets/icon-close.svg'
 import './header.scss'
 import { AiOutlineClose } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../../Context/userContext'
 
 function Header () {
   const [toggle, setToggle] = useState(false) 
   const { authUser, logout } = useContext(UserContext)
 
+  const navigate = useNavigate()
 
   const handleLogout = async () => {
     await logout()

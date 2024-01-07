@@ -130,8 +130,7 @@ function Apply () {
             <MDBCardBody>
               <MDBRow>
                 <MDBCol
-                  md='10'
-                  lg='6'
+                 
                   className='order-2 order-lg-1 d-flex flex-column align-items-center'
                 >
                   <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>
@@ -155,7 +154,7 @@ function Apply () {
                     {resumePercent > 0 && 'Uploading: ' + resumePercent + '%'}
                     <MDBInput
                       accept='.pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-                      label='Upload Resume'
+                      
                       onChange={handleFileChange}
                       name='resume'
                       id='form3'
@@ -185,13 +184,13 @@ function Apply () {
                   </MDBBtn>
                 </MDBCol>
 
-                <MDBCol
+                {/* <MDBCol
                   md='10'
                   lg='6'
                   className='order-1 order-lg-2 d-flex align-items-center'
                 >
                   <MDBCardImage src={bgApply} fluid />
-                </MDBCol>
+                </MDBCol> */}
               </MDBRow>
             </MDBCardBody>
           </MDBCard>

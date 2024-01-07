@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { getAllJobs } from '../../API/apiCalls'
 
 function Jobs () {
   const [jobs, getJobs] = useState([])
 
   const handleJobs = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/v1/all-jobs')
-      console.log(response)
-      const { jobs } = response?.data
-      getJobs(jobs)
-    } catch (err) {
-      console.log(err.message)
-    }
+    const response = await getAllJobs()
+    console.log(response.data)
+    getJobs(response.data.jobs)
+
   }
 
   useEffect(() => {
@@ -21,9 +18,9 @@ function Jobs () {
   }, [])
   return (
     <div className='row container-fluid'>
-      <h4 className='text-center fw-bold fs-3 p-4'>All Career Opportunities.</h4>
+      <h4 className='text-center text-white fw-bold fs-3 p-4'>All Career Opportunities.</h4>
       {jobs.map((job, index) => (
-        <div key={index} className='mb-3 mb-md-0 col-lg-6 col-12'>
+        <div key={index} className='mb-3 mb-md-0 col-lg-6 col-12 p-2'>
           <div className='card'>
             <div className='card-body'>
               <h5 className='card-title'><b>Job Title:</b> {job.jobTitle}</h5>

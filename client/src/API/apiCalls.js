@@ -31,6 +31,22 @@ export const userLogin = async payload => {
   return response
 }
 
+
+// View all Jobs
+
+export const getAllJobs = async () => {
+    const response = await axios.get('http://localhost:5000/api/v1/all-jobs', {
+      withCredentials: true,
+      headers : {
+        Accept: 'application/json',
+        Authorization : `Bearer ${JSON.parse(localStorage.getItem('userToken'))}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    console.log(response.data)
+    return response
+}
+
 // Submit Application
 
 export const applyForJob = async payload => {
@@ -44,4 +60,3 @@ export const applyForJob = async payload => {
   return response
 }
 
-// Admin API

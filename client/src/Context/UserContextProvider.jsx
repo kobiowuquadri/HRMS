@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import UserContext from './userContext'
 import axios from 'axios'
 
@@ -7,6 +7,15 @@ function UserContextProvider ({ children }) {
   const [authUser, setAuthUser] = useState(
     JSON.parse(localStorage.getItem('userToken'))
   )
+
+  useEffect(() => {
+    // Check and update authUser when localStorage changes
+    const storedUserToken = JSON.parse(localStorage.getItem('userToken'));
+    if (storedUserToken !== authUser) {
+      setAuthUser(storedUserToken);
+    }
+  }, []);  // <-- Removed authUser from the dependency array
+
 
   const logout = async () => {
     try {
