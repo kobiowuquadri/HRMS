@@ -10,38 +10,35 @@ import {
   MDBInput,
   MDBIcon
 } from 'mdb-react-ui-kit'
-import { userLogin } from '../../API/apiCalls'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import './login.scss'
-import UserContext from '../../Context/userContext'
+import { adminLogin } from '../../../API/adminApiCalls'
 
-function Login () {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const { setUser} = useContext(UserContext)
 
-  // console.log(user)
+function AdminLogin() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-  const navigate = useNavigate()
 
-  const handleLogin = async () => {
-    try {
-      const response = await userLogin({
-        email,
-        password
-      })
-      setUser(response.data.isUser)
-      console.log(response.data)
-      if(response.data.token){
-        navigate('/dashboard')
-        toast.success('Login Successfully')
+    const navigate = useNavigate()
+
+    const handleLogin = async () => {
+      try {
+        const response = await adminLogin({
+          email,
+          password
+        })
+        // setUser(response.data.isUser)
+        console.log(response.data)
+        if(response.data.token){
+          navigate('/dashboard')
+          toast.success('Admin Login Successfully')
+        }
+      } catch (error) {
+        console.error('Admin Login failed', error)
+        toast.error('Admin Login Failed')
       }
-    } catch (error) {
-      console.error('Login failed', error)
-      toast.error('Login Failed')
     }
-  }
 
   return (
     <MDBContainer
@@ -59,7 +56,7 @@ function Login () {
               className='order-2 order-lg-1 d-flex flex-column align-items-center'
             >
               <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>
-                LogIn
+               Admin LogIn
               </p>
 
               <div className='d-flex flex-row align-items-center mb-4'>
@@ -92,10 +89,10 @@ function Login () {
                 style={{ backgroundColor: '#0174BE' }}
                 onClick={handleLogin}
               >
-                Login
+               Admin Login
               </MDBBtn>
               <p>
-                Do not have an account? <Link to={'/register'}>Sign Up</Link>
+                Do not have an account? <Link to={'/register'}>Admin Sign Up</Link>
               </p>
             </MDBCol>
 
@@ -113,4 +110,4 @@ function Login () {
   )
 }
 
-export default Login
+export default AdminLogin

@@ -11,6 +11,7 @@ import Apply from './Pages/UserDashboard/Apply'
 import ProtectedRoutes from './Utils/ProtectedRoutes'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import AdminLogin from './Pages/Admin/Login/AdminLogin'
 
 function App () {
   useEffect(() => {
@@ -32,6 +33,11 @@ function App () {
           <Route index element={<Dashboard />}></Route>
           <Route path='jobs' element={<ViewJobs />} />
           <Route path='applyforjob' element={<Apply />} />
+        </Route>
+        <Route path='/admin' element={<ProtectedRoutes />}>
+          <Route index element={<AdminLogin />}></Route>
+          <Route path='register' element={<ViewJobs />} />
+          <Route path='dashboard' element={<Apply />} />
         </Route>
       </Routes>
     </>

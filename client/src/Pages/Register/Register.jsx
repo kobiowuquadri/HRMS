@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import loginBg from '../../assets/team_images.jpeg'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import {
   MDBBtn,
   MDBContainer,
@@ -15,8 +14,9 @@ import {
 import { userRegister } from '../../API/apiCalls'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { Link } from 'react-router-dom'
 import './register.scss'
+
+
 
 function Register () {
   const [email, setEmail] = useState('')

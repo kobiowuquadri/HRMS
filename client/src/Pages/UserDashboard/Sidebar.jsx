@@ -81,7 +81,7 @@ const Sidebar = () => {
         </div>
       </MDBCollapse>
 
-      <MDBNavbar expand='lg' light bgColor='light'>
+      <MDBNavbar expand='lg' className='fixed-top' light bgColor='light'>
         <MDBContainer fluid>
           <MDBNavbarNav className='d-flex flex-row align-items-center w-auto'>
             <MDBNavbarToggler
