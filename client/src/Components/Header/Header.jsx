@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import menuIcon from '../.././assets/icon-menu.svg'
 import closeIcon from '../.././assets/icon-close.svg'
 import './header.scss'
@@ -8,9 +8,15 @@ import UserContext from '../../Context/userContext'
 
 function Header () {
   const [toggle, setToggle] = useState(false) 
-  const { authUser, logout } = useContext(UserContext)
+  const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('userToken')))
+  const { logout } = useContext(UserContext)
+  console.log(authUser)
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+     
+  }, [authUser])
 
   const handleLogout = async () => {
     await logout()
