@@ -12,6 +12,9 @@ import ProtectedRoutes from './Utils/ProtectedRoutes'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import AdminLogin from './Pages/Admin/Login/AdminLogin'
+import AdminRegister from './Pages/Admin/Register/AdminRegister'
+import ProtectedAdminRoutes from './Utils/adminProtectedRoutes'
+import AdminDashboard from './Pages/Admin/Dashboard/AdminDashboard'
 
 function App () {
   useEffect(() => {
@@ -34,10 +37,10 @@ function App () {
           <Route path='jobs' element={<ViewJobs />} />
           <Route path='applyforjob' element={<Apply />} />
         </Route>
-        <Route path='/admin' element={<ProtectedRoutes />}>
-          <Route index element={<AdminLogin />}></Route>
-          <Route path='register' element={<ViewJobs />} />
-          <Route path='dashboard' element={<Apply />} />
+        <Route path='/admin-login' element={<AdminLogin />}></Route>
+        <Route path='/admin-signup' element={<AdminRegister />}></Route>
+        <Route path='/admin-dashboard' element={<ProtectedAdminRoutes />}>
+          <Route index element={<AdminDashboard />} />
         </Route>
       </Routes>
     </>

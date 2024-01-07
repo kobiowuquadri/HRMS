@@ -31,7 +31,7 @@ function AdminLogin() {
         // setUser(response.data.isUser)
         console.log(response.data)
         if(response.data.token){
-          navigate('/dashboard')
+          navigate('/admin-dashboard')
           toast.success('Admin Login Successfully')
         }
       } catch (error) {
@@ -92,7 +92,7 @@ function AdminLogin() {
                Admin Login
               </MDBBtn>
               <p>
-                Do not have an account? <Link to={'/register'}>Admin Sign Up</Link>
+                Do not have an account? <Link to={'/admin-signup'}>Admin Sign Up</Link>
               </p>
             </MDBCol>
 

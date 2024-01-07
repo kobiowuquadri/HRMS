@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import {
   MDBBtn,
   MDBContainer,
@@ -30,7 +30,7 @@ function AdminRegister() {
         password
       })
       toast.success("Admin Registration Successfully")
-      navigate('/login')
+      navigate('/admin-login')
     }
 
 
@@ -97,7 +97,7 @@ function AdminRegister() {
                  Admin Sign Up
                </MDBBtn>
              {/* </form> */}
-             <p>Already have an account? <Link to={'/login'}>Admin Login</Link></p>
+             <p>Already have an account? <Link to={'/admin-login'}>Admin Login</Link></p>
            </MDBCol>
           
            <MDBCol

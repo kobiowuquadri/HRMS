@@ -9,7 +9,7 @@ function ProtectedAdminRoutes () {
         setIsAdmin(JSON.parse(localStorage.getItem('adminToken')))
     })
 
-    return isAdmin ? <Outlet/> : <Navigate to='admin-login'/>
+    return isAdmin ? <Outlet/> : <Navigate to='/admin-login'/>
 }
 
 export default ProtectedAdminRoutes
