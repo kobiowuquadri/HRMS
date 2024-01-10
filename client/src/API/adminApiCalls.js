@@ -38,3 +38,15 @@ export const getAllUsers = async () => {
   console.log(response.data)
   return response
 }
+export const getAllJobs = async () => {
+  const response = await axios.get('http://localhost:5000/api/v1/admin-total-jobs', {
+    withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+       Accept: 'application/json',
+       Authorization: `Bearer ${JSON.parse(localStorage.getItem('adminToken'))}`
+    }
+  })
+  console.log(response.data)
+  return response
+}
