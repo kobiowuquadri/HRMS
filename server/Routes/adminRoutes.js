@@ -1,6 +1,6 @@
 const express = require('express')
 const adminRouter = express.Router()
-const {adminRegister, adminLogin,adminCreateJobs, getAllUsers, totalJobs} = require('../Controllers/adminControllers')
+const {adminRegister, adminLogin,adminCreateJobs, getAllUsers, totalJobs, logoutAdmin} = require('../Controllers/adminControllers')
 const authorizedAdmin = require('../Middlewares/adminMiddleware')
 
 
@@ -18,8 +18,8 @@ adminRouter.get('/admin-all-users', authorizedAdmin,  getAllUsers)
 adminRouter.post('/admin-create-jobs', authorizedAdmin, adminCreateJobs)
 
 
-// Get All Jobs
-// adminRouter.get('/all-jobs', allJobs)
+// Logout 
+adminRouter.get('/admin-logout', logoutAdmin)
 
 // Get All Jobs
 adminRouter.get('/admin-total-jobs', authorizedAdmin, totalJobs)

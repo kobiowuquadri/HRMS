@@ -139,10 +139,18 @@ const getAllUsers = async (req, res) => {
   }
 }
 
+// logout admin
+
+const logoutAdmin = (req, res) => {
+  res.cookie('adminId', '', {maxAge: 0, httpOnly: true})
+  res.status(200).json({success: true, message: "Logged out Succcessfully"})
+}
+
 module.exports = {
   adminRegister,
   adminLogin,
   adminCreateJobs,
   getAllUsers,
-  totalJobs
+  totalJobs,
+  logoutAdmin
 }
