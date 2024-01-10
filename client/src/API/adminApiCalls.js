@@ -9,7 +9,6 @@ export const adminRegister = (payload) => {
   return response
 }
 
-
 export const adminLogin = async payload => {
     const response = await axios.post(
       'http://localhost:5000/api/v1/admin-login',
@@ -26,3 +25,16 @@ export const adminLogin = async payload => {
     console.log(isAdmin)
     return response
   }
+
+export const getAllUsers = async () => {
+  const response = await axios.get('http://localhost:5000/api/v1/admin-all-users', {
+    withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+       Accept: 'application/json',
+       Authorization: `Bearer ${JSON.parse(localStorage.getItem('adminToken'))}`
+    }
+  })
+  console.log(response.data)
+  return response
+}

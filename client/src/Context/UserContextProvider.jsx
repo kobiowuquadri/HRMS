@@ -27,8 +27,19 @@ function UserContextProvider ({ children }) {
       console.error('Logout failed:', error)
     }
   }
+  const logoutAdmin = async () => {
+    try {
+      await axios.post('http://localhost:5000/api/v1/admin-logout', null, {
+        withCredentials: true
+      })
+      // setAuthUser(null)
+      localStorage.removeItem('adminToken')
+    } catch (error) {
+      console.error('Logout failed:', error)
+    }
+  }
   return (
-    <UserContext.Provider value={{ user, setUser, logout, authUser }}>
+    <UserContext.Provider value={{ user, setUser, logout, authUser, logoutAdmin }}>
       {children}
     </UserContext.Provider>
   )

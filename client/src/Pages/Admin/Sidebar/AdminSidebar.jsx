@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import './slidebar.scss'
+import '../../UserDashboard/slidebar.scss'
 import {
   MDBContainer,
   MDBNavbar,
@@ -22,26 +22,17 @@ import {
   MDBDropdownLink,
   MDBListGroupItem
 } from 'mdb-react-ui-kit'
-import logoIcon from '../../assets/logo.svg'
-import UserContext from '../../Context/userContext'
 
-const Sidebar = () => {
+function AdminSidebar() {
   const [showShow, setShowShow] = useState(false)
-  const { logout } = useContext(UserContext)
+  // const { logout } = useContext(UserContext)
 
   const toggleShow = () => setShowShow(!showShow)
-  const navigate = useNavigate()
-
-  const handleLogout = async () => {
-    await logout()
-    setTimeout(() => {
-      navigate('/login');
-    }, 0);
-  }
+  // const navigate = useNavigate()
 
   return (
     <>
-      <MDBCollapse
+        <MDBCollapse
         show={showShow}
         tag='nav'
         className='d-lg-block bg-white sidebar'
@@ -71,7 +62,7 @@ const Sidebar = () => {
             >
               <MDBListGroupItem
                 className='border-0 rounded'
-                onClick={handleLogout}
+                // onClick={handleLogout}
               >
                 <MDBIcon fas icon='money-bill me-3' />
                 Logout
@@ -185,4 +176,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default AdminSidebar

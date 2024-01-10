@@ -31,7 +31,7 @@ function Dashboard () {
     <div className='board'>
       <Sidebar />
       <div className='main__board'>
-        <h1 className='text-white'>Hey, Welcome! 
+        <h1 className='text-white py-2'>Hey, Welcome! 
         <TypeAnimation
               sequence={[
                 user.name,
