@@ -83,10 +83,14 @@ const adminCreateJobs = async (req, res) => {
     const { jobTitle, jobDescription, companyName, startDate, endDate } =
       req.body
 
-    const jobId = new mongoose.Types.ObjectId()
-
+      const existingJob = await jobsModel.findOne({jobDescription})
+      if(existingJob){
+        return  res.status(404).json({
+          success: false,
+          message: "Job already exist."
+        })
+      }
     const newJob = jobsModel({
-      _id: jobId,
       jobTitle,
       jobDescription,
       companyName,
@@ -139,6 +143,49 @@ const getAllUsers = async (req, res) => {
   }
 }
 
+
+// Get Jobs
+
+const getJobs = async (req, res) => {
+  try {
+      const jobs = await jobsModel.find()
+      res
+      .status(202)
+      .json({ success: true, message: 'View All Jobs Succesfully', jobs })
+  }
+  catch(err){
+    console.error(err)
+    res.status(404).json({
+      success: false,
+      msg: err.message
+    })
+  }
+}
+
+const getUsers = async (req, res) => {
+  try {
+    const users = await userModel.find()
+    res.status(202).json({success: true, message: "View all users successfully", users})
+
+  }
+  catch(err){
+    console.error(err)
+    res.status(404).json({
+      success: false,
+      msg: err.message
+    })
+  }
+}
+
+
+
+
+
+
+
+
+
+
 // logout admin
 
 const logoutAdmin = (req, res) => {
@@ -152,5 +199,7 @@ module.exports = {
   adminCreateJobs,
   getAllUsers,
   totalJobs,
-  logoutAdmin
+  logoutAdmin,
+  getJobs,
+  getUsers
 }

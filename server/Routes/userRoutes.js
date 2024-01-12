@@ -24,6 +24,6 @@ userRouter.post('/user-logout', logout)
 // User Application
 userRouter.post('/user-apply', authorizedUser, upload.single('resume'),  applyForJobs)
 
-userRouter.get('/getapplied-jobs/:_id', authorizedUser, viewAppliedJobs)
+userRouter.get('/getapplied-jobs/:id', authorizedUser, viewAppliedJobs)
 
 module.exports = userRouter
