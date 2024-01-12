@@ -15,6 +15,7 @@ import AdminLogin from './Pages/Admin/Login/AdminLogin'
 import AdminRegister from './Pages/Admin/Register/AdminRegister'
 import ProtectedAdminRoutes from './Utils/adminProtectedRoutes'
 import AdminDashboard from './Pages/Admin/Dashboard/AdminDashboard'
+import CreateJobs from './Pages/Admin/CretateJobs/CreateJobs'
 
 function App () {
   useEffect(() => {
@@ -41,7 +42,8 @@ function App () {
         <Route path='/admin-signup' element={<AdminRegister />}></Route>
         <Route path='/admin-dashboard' element={<ProtectedAdminRoutes />}>
           <Route index element={<AdminDashboard />} />
-          <Route path='create-jobs' element={<ViewJobs />} />
+          <Route path='create-jobs' element={<CreateJobs />} />
+          {/* <Route path='all-users' element={<ViewJobs />} /> */}
         </Route>
       </Routes>
     </>

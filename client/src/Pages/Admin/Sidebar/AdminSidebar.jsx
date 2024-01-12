@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../../UserDashboard/slidebar.scss'
 import {
@@ -22,13 +22,21 @@ import {
   MDBDropdownLink,
   MDBListGroupItem
 } from 'mdb-react-ui-kit'
+import UserContext from '../../../Context/userContext'
 
 function AdminSidebar() {
   const [showShow, setShowShow] = useState(false)
-  // const { logout } = useContext(UserContext)
+  const { logoutAdmin, adminToken } = useContext(UserContext);
 
   const toggleShow = () => setShowShow(!showShow)
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
+
+
+  const handleLogout = async () => {
+    await logoutAdmin()
+    navigate('/admin-login');
+  }
+
 
   return (
     <>
@@ -53,7 +61,13 @@ function AdminSidebar() {
             <MDBRipple rippleTag='span'>
               <MDBListGroupItem className='border-0 border-bottom rounded'>
                 <MDBIcon fas icon='chart-area me-3' />
-                <Link to='/dashboard/jobs' className='text-dark'>Jobs</Link>
+                <Link to='/admin-dashboard/create-jobs' className='text-dark'>Create Job</Link>
+              </MDBListGroupItem>
+            </MDBRipple>
+            <MDBRipple rippleTag='span'>
+              <MDBListGroupItem className='border-0 border-bottom rounded'>
+                <MDBIcon fas icon='chart-area me-3' />
+                <Link to='/admin-dashboard/all-users' className='text-dark'>All Users</Link>
               </MDBListGroupItem>
             </MDBRipple>
             <MDBRipple
@@ -62,7 +76,7 @@ function AdminSidebar() {
             >
               <MDBListGroupItem
                 className='border-0 rounded'
-                // onClick={handleLogout}
+                onClick={handleLogout}
               >
                 <MDBIcon fas icon='money-bill me-3' />
                 Logout

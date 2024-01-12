@@ -50,3 +50,24 @@ export const getAllJobs = async () => {
   console.log(response.data)
   return response
 }
+
+export const adminCreateJobs = async payload => {
+  const response = await axios.post(
+    'http://localhost:5000/api/v1/admin-create-jobs',
+    payload,
+    {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+         Accept: 'application/json',
+         Authorization: `Bearer ${JSON.parse(localStorage.getItem('adminToken'))}`
+      }
+    }
+  )
+  console.log(response?.data)
+
+
+  return response
+}
+
+

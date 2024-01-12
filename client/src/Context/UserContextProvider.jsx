@@ -8,14 +8,23 @@ function UserContextProvider ({ children }) {
   const [authUser, setAuthUser] = useState(
     JSON.parse(localStorage.getItem('userToken'))
   )
+  const [authAdmin, setAuthAdmin] = useState(
+    JSON.parse(localStorage.getItem('adminToken'))
+  )
 
   useEffect(() => {
-    const storedUserToken = JSON.parse(localStorage.getItem('userToken'));
+    const storedUserToken = JSON.parse(localStorage.getItem('userToken'))
     if (storedUserToken !== authUser) {
-      setAuthUser(storedUserToken);
+      setAuthUser(storedUserToken)
     }
-  }, []);
+  }, [])
 
+  useEffect(() => {
+    const storedAdminToken = JSON.parse(localStorage.getItem('adminToken'))
+    if (storedAdminToken !== authAdmin) {
+      setAuthAdmin(storedAdminToken)
+    }
+  }, [])
 
   const logout = async () => {
     try {
@@ -33,14 +42,16 @@ function UserContextProvider ({ children }) {
       await axios.post('http://localhost:5000/api/v1/admin-logout', null, {
         withCredentials: true
       })
-      // setAuthUser(null)
+      setAuthAdmin(null)
       localStorage.removeItem('adminToken')
     } catch (error) {
       console.error('Logout failed:', error)
     }
   }
   return (
-    <UserContext.Provider value={{ user, setUser, logout, authUser, logoutAdmin, admin, setAdmin }}>
+    <UserContext.Provider
+      value={{ user, setUser, logout, authUser, logoutAdmin, admin, setAdmin }}
+    >
       {children}
     </UserContext.Provider>
   )

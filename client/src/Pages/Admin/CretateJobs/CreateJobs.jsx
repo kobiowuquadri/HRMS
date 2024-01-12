@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import {
     MDBBtn,
     MDBContainer,
@@ -9,31 +10,43 @@ import {
     MDBInput,
     MDBIcon
   } from 'mdb-react-ui-kit'
+  import { adminCreateJobs } from '../../../API/adminApiCalls'
 
 function CreateJobs() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [jobTitle, setJobTitle] = useState('')
+    const [jobDescription, setJobDescription] = useState('')
+    const [companyName, setCompanyName] = useState('')
+    const [startDate, setStartDate] = useState('')
+    const [ endDate, setEndDate] = useState('')
 
 
     const navigate = useNavigate()
 
-    const handleLogin = async () => {
+    const handlecreateJob = async () => {
       try {
-        const response = await adminLogin({
-          email,
-          password
-        })
-        // setUser(response.data.isUser)
-        console.log(response.data)
-        if(response.data.token){
-          navigate('/admin-dashboard')
-          toast.success('Admin Login Successfully')
+        const response = await adminCreateJobs({
+          jobTitle,
+          jobDescription,
+          companyName,
+          startDate,
+          endDate
+        });
+    
+        console.log(response.data);
+        
+        if (response.status === 200 || response.status === 201) {
+          // Assuming a successful response status code
+          navigate('/admin-dashboard');
+          toast.success('Job created Successfully');
+        } else {
+          toast.error('Job Create Failed');
         }
       } catch (error) {
-        console.error('Admin Login failed', error)
-        toast.error('Admin Login Failed')
+        console.error('Job Create failed', error);
+        toast.error('Job Create Failed');
       }
-    }
+    };
+    
 
   return (
     <>
@@ -52,52 +65,76 @@ function CreateJobs() {
               className='order-2 order-lg-1 d-flex flex-column align-items-center'
             >
               <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>
-               Admin LogIn
+                Create Job
               </p>
 
               <div className='d-flex flex-row align-items-center mb-4'>
                 <MDBIcon fas icon='envelope me-3' size='lg' />
                 <MDBInput
-                  label='Your Email'
-                  name='email'
+                  label='Job Title'
+                  name='jobTitle'
                   id='form2'
-                  type='email'
-                  onChange={e => setEmail(e.target.value)}
-                  value={email}
+                  type='text'
+                  onChange={e => setJobTitle(e.target.value)}
+                  value={jobTitle}
                 />
               </div>
 
               <div className='d-flex flex-row align-items-center mb-4'>
-                <MDBIcon fas icon='lock me-3' size='lg' />
+                <MDBIcon fas icon='envelope me-3' size='lg' />
                 <MDBInput
-                  label='Password'
-                  name='password'
-                  id='form3'
-                  type='password'
-                  onChange={e => setPassword(e.target.value)}
-                  value={password}
+                  label='Job Description'
+                  name='jobDescription'
+                  id='form2'
+                  type='text'
+                  onChange={e => setJobDescription(e.target.value)}
+                  value={jobDescription}
                 />
               </div>
 
+              <div className='d-flex flex-row align-items-center mb-4'>
+                <MDBIcon fas icon='envelope me-3' size='lg' />
+                <MDBInput
+                  label='Company Name'
+                  name='companyName'
+                  id='form2'
+                  type='text'
+                  onChange={e => setCompanyName(e.target.value)}
+                  value={companyName}
+                />
+              </div>
+              <div className='d-flex flex-row align-items-center mb-4'>
+                <MDBIcon fas icon='envelope me-3' size='lg' />
+                <MDBInput
+                  label='Start Date'
+                  name='startate'
+                  id='form2'
+                  type='date'
+                  onChange={e => setStartDate(e.target.value)}
+                  value={startDate}
+                />
+              </div>
+              <div className='d-flex flex-row align-items-center mb-4'>
+                <MDBIcon fas icon='envelope me-3' size='lg' />
+                <MDBInput
+                  label='End Date'
+                  name='endDate'
+                  id='form2'
+                  type='date'
+                  onChange={e => setEndDate(e.target.value)}
+                  value={endDate}
+                />
+              </div>
+
+              
               <MDBBtn
                 className='mb-4'
                 size='lg'
                 style={{ backgroundColor: '#0174BE' }}
-                onClick={handleLogin}
+                onClick={handlecreateJob}
               >
-               Admin Login
+               Create Job
               </MDBBtn>
-              <p>
-                Do not have an account? <Link to={'/admin-signup'}>Admin Sign Up</Link>
-              </p>
-            </MDBCol>
-
-            <MDBCol
-              md='10'
-              lg='6'
-              className='order-1 order-lg-2 d-flex align-items-center'
-            >
-              {/* <MDBCardImage src={loginBg} fluid /> */}
             </MDBCol>
           </MDBRow>
         </MDBCardBody>
