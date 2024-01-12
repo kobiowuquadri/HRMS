@@ -54,7 +54,12 @@ export const applyForJob = async payload => {
     'http://localhost:5000/api/v1/user-apply',
     payload,
     {
-      withCredentials: true
+      withCredentials: true,
+      headers : {
+        Accept: 'application/json',
+        Authorization : `Bearer ${JSON.parse(localStorage.getItem('userToken'))}`,
+        'Content-Type': 'application/json'
+      }
     }
   )
   return response

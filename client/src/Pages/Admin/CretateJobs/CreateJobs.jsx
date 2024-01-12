@@ -1,26 +1,19 @@
-import React, { useState, useContext } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import React from 'react'
 import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBIcon
-} from 'mdb-react-ui-kit'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { adminLogin } from '../../../API/adminApiCalls'
-import UserContext from '../../../Context/userContext'
+    MDBBtn,
+    MDBContainer,
+    MDBRow,
+    MDBCol,
+    MDBCard,
+    MDBCardBody,
+    MDBInput,
+    MDBIcon
+  } from 'mdb-react-ui-kit'
 
-
-function AdminLogin() {
+function CreateJobs() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const { setAdmin } = useContext(UserContext)
 
     const navigate = useNavigate()
 
@@ -30,7 +23,7 @@ function AdminLogin() {
           email,
           password
         })
-        setAdmin(response.data.isAdmin)
+        // setUser(response.data.isUser)
         console.log(response.data)
         if(response.data.token){
           navigate('/admin-dashboard')
@@ -43,7 +36,8 @@ function AdminLogin() {
     }
 
   return (
-    <MDBContainer
+    <>
+     <MDBContainer
       id='login_user'
       fluid
       className='d-flex min-vh-100 align-items-center justify-content-center'
@@ -109,7 +103,8 @@ function AdminLogin() {
         </MDBCardBody>
       </MDBCard>
     </MDBContainer>
+    </>
   )
 }
 
-export default AdminLogin
+export default CreateJobs

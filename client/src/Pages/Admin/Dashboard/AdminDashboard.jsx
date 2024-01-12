@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AdminSidebar from '../Sidebar/AdminSidebar';
-import { getAllUsers } from '../../../API/adminApiCalls';
+import { getAllUsers, getAllJobs } from '../../../API/adminApiCalls';
 import ReactApexChart from 'react-apexcharts';
-import { getAllJobs } from '../../../API/apiCalls';
 
 function AdminDashboard() {
   const [totalUsers, setTotalUsers] = useState('');
@@ -11,8 +10,8 @@ function AdminDashboard() {
   const handleGetAllUsers = async () => {
     try {
       const response = await getAllUsers();
-      const total = response.data.allUsers;
-      setTotalUsers(total);
+      const totalusers = response.data.allUsers;
+      setTotalUsers(totalusers);
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
@@ -20,8 +19,8 @@ function AdminDashboard() {
   const handleGetAllJobs = async () => {
     try {
       const response = await getAllJobs();
-      const total = response.data.jobsCount;
-      setTotalJobs(total);
+      const totaljob = response.data.jobsCount;
+      setTotalJobs(totaljob);
     } catch (error) {
       console.error('Error fetching user data:', error);
     }

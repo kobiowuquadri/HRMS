@@ -41,6 +41,7 @@ function App () {
         <Route path='/admin-signup' element={<AdminRegister />}></Route>
         <Route path='/admin-dashboard' element={<ProtectedAdminRoutes />}>
           <Route index element={<AdminDashboard />} />
+          <Route path='create-jobs' element={<ViewJobs />} />
         </Route>
       </Routes>
     </>
