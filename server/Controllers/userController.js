@@ -98,11 +98,11 @@ const userLogin = async (req, res) => {
     const { email, password } = req.body
     const isUser = await userModel.findOne({ email })
     if (!isUser) {
-      res.status(401).json({ success: false, message: 'User not found!' })
+     return res.status(401).json({ success: false, message: 'User not found!' })
     }
     const isPassword = await bcrypt.compare(password, isUser.password)
     if (!isPassword) {
-      res.status(401).json({ success: false, message: 'Incorrect Password' })
+     return res.status(401).json({ success: false, message: 'Incorrect Password' })
     }
     jwt.sign(
       { id: isUser._id },
@@ -123,7 +123,7 @@ const userLogin = async (req, res) => {
     )
   } catch (err) {
     console.error(err)
-    res.status(400).json({
+    return res.status(400).json({
       success: false,
       message: err.message
     })
@@ -225,6 +225,8 @@ const updateUser = async (req, res) => {
     })
   }
 }
+
+
 
 const logout = async (req, res) => {
   res.cookie('userId', '', { maxAge: 0, httpOnly: true })
