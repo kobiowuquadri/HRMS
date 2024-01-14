@@ -7,15 +7,17 @@ const jobsModel = require('../Models/createJobs')
 
 const period = 1000 * 60 * 60 * 24 * 3
 
-const handleErrors = (err)=> {
+const handleErrors = err => {
   console.log(err.message, err.code)
-  let error = {email: "", password: ""}
+  let error = { email: '', password: '' }
 
   // validation errors
-  if(err.message.includes("usermodels validation failed")){
-    console.log(Object.values(err.errors).forEach(({properties}) => {
-      error[properties.path] = properties.message
-    }))
+  if (err.message.includes('usermodels validation failed')) {
+    console.log(
+      Object.values(err.errors).forEach(({ properties }) => {
+        error[properties.path] = properties.message
+      })
+    )
   }
   return error
 }
@@ -35,10 +37,10 @@ const userRegister = async (req, res) => {
     const existingUser = await userModel.findOne({ email })
     if (existingUser) {
       return res
-      .status(409)
-      .json({ sucess: false, message: 'Email already in use' })
+        .status(409)
+        .json({ sucess: false, message: 'Email already in use' })
     }
-    let hashPassword;
+    let hashPassword
     if (password) {
       hashPassword = await bcrypt.hash(password, 10)
     }
@@ -83,7 +85,7 @@ const userRegister = async (req, res) => {
       .status(201)
       .json({ success: true, message: 'User Created Successfully', savedUser })
   } catch (err) {
-   const errors = handleErrors(err)
+    const errors = handleErrors(err)
     res.status(422).json({
       success: false,
       errors
@@ -132,16 +134,16 @@ const userLogin = async (req, res) => {
 
 const allJobs = async (req, res) => {
   try {
-     const jobs = await jobsModel.find()
-     res.status(200).json({success: true, message: "View allJobs Successful", jobs})
-  
-  }
-  catch(err){
-     console.error(err);
-     res.status(404).json({
-       success: false,
-       msg: err.message,
-     });
+    const jobs = await jobsModel.find()
+    res
+      .status(200)
+      .json({ success: true, message: 'View allJobs Successful', jobs })
+  } catch (err) {
+    console.error(err)
+    res.status(404).json({
+      success: false,
+      msg: err.message
+    })
   }
 }
 
@@ -174,24 +176,67 @@ const applyForJobs = async (req, res) => {
 }
 
 const viewAppliedJobs = async (req, res) => {
-    try {
-      const id = req.params._id
-      const getJob = await appForJobsModel.findById(id)
-      res.status(200).json({success: true, message: "View Applied Jobs Successful", getJob})
-    }
-    catch(err){
-      console.error(err)
-      res.status(404).json({
-        success: false,
-        message: err.message
-      })
-    }
+  try {
+    const id = req.params._id
+    const getJob = await appForJobsModel.findById(id)
+    res
+      .status(200)
+      .json({ success: true, message: 'View Applied Jobs Successful', getJob })
+  } catch (err) {
+    console.error(err)
+    res.status(404).json({
+      success: false,
+      message: err.message
+    })
+  }
+}
 
+// User update profile
+
+const updateUser = async (req, res) => {
+  try {
+    const id = req.params.id
+    const {
+      email,
+      name,
+      currentJob,
+      jobDescription,
+      qualification,
+      DOB,
+      phoneNumber
+    } = req.body
+    const updatedUser = await userModel.findByIdAndUpdate(id, {
+      email,
+      name,
+      currentJob,
+      jobDescription,
+      qualification,
+      DOB,
+      phoneNumber
+    }, {new: true})
+    res
+      .status(202)
+      .json({ success: true, message: 'Update User Successfully', updatedUser })
+  } catch (err) {
+    console.error(err)
+    res.status(404).json({
+      success: false,
+      message: err.message
+    })
+  }
 }
 
 const logout = async (req, res) => {
   res.cookie('userId', '', { maxAge: 0, httpOnly: true })
-  res.status(200).json({success: true, message: 'Logged out successfully'})
+  res.status(200).json({ success: true, message: 'Logged out successfully' })
 }
 
-module.exports = { userRegister, userLogin, logout, applyForJobs, viewAppliedJobs, allJobs }
+module.exports = {
+  userRegister,
+  userLogin,
+  logout,
+  applyForJobs,
+  viewAppliedJobs,
+  allJobs,
+  updateUser
+}
