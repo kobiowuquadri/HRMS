@@ -26,25 +26,29 @@ import { Outlet } from 'react-router-dom';
 function Dashboard () {
   const { user } = useContext(UserContext)
   console.log(user)
+  
 
   return (
     <div className='board'>
       <Sidebar />
       <div className='main__board'>
-        <h1 className='text-white py-2'>Hey, Welcome! 
-        <TypeAnimation
-              sequence={[
-                user.name,
-                1000,
-                " ",
-                2000
-              ]}
-              wrapper='span'
-              cursor={true}
-              repeat={Infinity}
-              style={{ color: '#fff', textAlign: 'center' }}
-            />
-        </h1>
+        <div className='d-flex justify-content-between align-items-center'>
+          <h1 className='text-white py-2'>Hey, Welcome
+          <TypeAnimation
+                sequence={[
+                   " " + user.name + "!",
+                  1000,
+                  " ",
+                  2000
+                ]}
+                wrapper='span'
+                cursor={true}
+                repeat={Infinity}
+                style={{ color: '#fff', textAlign: 'center' }}
+              />
+          </h1>
+          {/* <button className='btn btn-primary'><Link to={`update-profile/${user._id}`} className="text-white">Update Profile</Link></button> */}
+        </div>
         <section style={{ backgroundColor: '#eee' }}>
           <MDBContainer className='py-5'>
             {/* <MDBRow>

@@ -2,6 +2,8 @@ import axios from 'axios'
 import { useContext } from 'react'
 import UserContext from '../Context/userContext'
 
+// const { user } = useContext(UserContext)
+
 export const userRegister = async payload => {
   const response = await axios.post(
     'http://localhost:5000/api/v1/user-register',
@@ -30,6 +32,7 @@ export const userLogin = async payload => {
   console.log(isUser)
   return response
 }
+
 
 
 // View all Jobs
