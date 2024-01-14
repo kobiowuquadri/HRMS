@@ -37,36 +37,31 @@ function App () {
 
   return (
     // <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <>
-        <ToastContainer
-          style={{
-            '--toastify-color-progress-bar': '#B3B3B3'
-          }}
-        />
-        <Routes>
-          <Route index element={<Home />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/register' element={<Register />}></Route>
-          <Route path='/dashboard' element={<ProtectedRoutes />}>
-            <Route index element={<Dashboard />}></Route>
-            <Route path='jobs' element={<ViewJobs />} />
-            <Route path='applyforjob' element={<Apply />} />
-            {/* {user && user._id ? (
-              <Route
-                path={`update-profile/${user._id}`}
-                element={<UpdateProfile />}
-              />
-            ) : null} */}
-          </Route>
-          <Route path='/admin-login' element={<AdminLogin />}></Route>
-          <Route path='/admin-signup' element={<AdminRegister />}></Route>
-          <Route path='/admin-dashboard' element={<ProtectedAdminRoutes />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path='create-jobs' element={<CreateJobs />} />
-            {/* <Route path='all-users' element={<ViewJobs />} /> */}
-          </Route>
-        </Routes>
-      </>
+    <>
+      <ToastContainer
+        style={{
+          '--toastify-color-progress-bar': '#B3B3B3'
+        }}
+      />
+      <Routes>
+        <Route index element={<Home />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register />}></Route>
+        <Route path='/dashboard' element={<ProtectedRoutes />}>
+          <Route index element={<Dashboard />}></Route>
+          <Route path='jobs' element={<ViewJobs />} />
+          <Route path='applyforjob' element={<Apply />} />
+          <Route path='update-profile/:id' element={<UpdateProfile />} />
+        </Route>
+        <Route path='/admin-login' element={<AdminLogin />}></Route>
+        <Route path='/admin-signup' element={<AdminRegister />}></Route>
+        <Route path='/admin-dashboard' element={<ProtectedAdminRoutes />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path='create-jobs' element={<CreateJobs />} />
+          {/* <Route path='all-users' element={<ViewJobs />} /> */}
+        </Route>
+      </Routes>
+    </>
     // </ErrorBoundary>
   )
 }

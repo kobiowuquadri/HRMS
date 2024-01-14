@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import {
   MDBBtn,
@@ -17,15 +17,18 @@ import '../Register/register.scss'
 import UserContext from '../../Context/userContext'
 
 function UpdateProfile () {
-  const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
-  const [currentJob, setCurrentJob] = useState('')
-  const [jobDescription, setJobDescription] = useState('')
-  const [qualification, setQualification] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [DOB, setDOB] = useState('')
-
   const { user } = useContext(UserContext)
+  
+  const [email, setEmail] = useState(user.email)
+  const [name, setName] = useState(user.name)
+  const [currentJob, setCurrentJob] = useState(user.currentJob)
+  const [jobDescription, setJobDescription] = useState(user.jobDescription)
+  const [qualification, setQualification] = useState(user.qualification)
+  const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber)
+  const [DOB, setDOB] = useState(user.DOB)
+
+  const { id } = useParams()
+
 
   const navigate = useNavigate()
 
@@ -34,7 +37,7 @@ function UpdateProfile () {
   const updateProfile = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/update-user/${user._id}}`,
+        `http://localhost:5000/api/v1/update-user/${id}`,
         {
           email,
           name,
@@ -57,9 +60,9 @@ function UpdateProfile () {
       )
       console.log(response)
       toast.success('Profile Updated Successfully')
-      navigate('/dahsboard')
+      navigate('/dashboard')
     } catch (err) {
-        conole.log(err.message)
+        console.log(err.message)
     }
   }
 
@@ -90,7 +93,7 @@ function UpdateProfile () {
                   id='form2'
                   type='email'
                   onChange={e => setEmail(e.target.value)}
-                  value={user.email}
+                  value={email}
                 />
               </div>
 
@@ -102,7 +105,7 @@ function UpdateProfile () {
                   id='form3'
                   type='text'
                   onChange={e => setName(e.target.value)}
-                  value={user.name}
+                  value={name}
                 />
               </div>
               {/* <div className='d-flex flex-row align-items-center mb-4'>
@@ -125,7 +128,7 @@ function UpdateProfile () {
                   id='form3'
                   type='text'
                   onChange={e => setCurrentJob(e.target.value)}
-                  value={user.currentJob}
+                  value={currentJob}
                 />
               </div>
               <div className='d-flex flex-row align-items-center mb-4'>
@@ -136,7 +139,7 @@ function UpdateProfile () {
                   id='form3'
                   type='text'
                   onChange={e => setJobDescription(e.target.value)}
-                  value={user.jobDescription}
+                  value={jobDescription}
                 />
               </div>
               <div className='d-flex flex-row align-items-center mb-4'>
@@ -147,7 +150,7 @@ function UpdateProfile () {
                   id='form3'
                   type='text'
                   onChange={e => setQualification(e.target.value)}
-                  value={user.qualification}
+                  value={qualification}
                 />
               </div>
 
@@ -159,7 +162,7 @@ function UpdateProfile () {
                   id='form3'
                   type='number'
                   onChange={e => setPhoneNumber(e.target.value)}
-                  value={user.phoneNumber}
+                  value={phoneNumber}
                 />
               </div>
 
@@ -171,7 +174,7 @@ function UpdateProfile () {
                   id='form3'
                   type='date'
                   onChange={e => setDOB(e.target.value)}
-                  value={user.DOB}
+                  value={DOB}
                 />
               </div>
 

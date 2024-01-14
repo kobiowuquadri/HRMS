@@ -20,7 +20,7 @@ import {
 import UserContext from '../../Context/userContext'
 import profileImage from '../../assets/profileImage.png'
 import { TypeAnimation } from 'react-type-animation'
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 
 function Dashboard () {
@@ -47,7 +47,7 @@ function Dashboard () {
                 style={{ color: '#fff', textAlign: 'center' }}
               />
           </h1>
-          {/* <button className='btn btn-primary'><Link to={`update-profile/${user._id}`} className="text-white">Update Profile</Link></button> */}
+          <Link to={`/dashboard/update-profile/${user._id}`} className="btn btn-primary">Update Profile</Link>
         </div>
         <section style={{ backgroundColor: '#eee' }}>
           <MDBContainer className='py-5'>
