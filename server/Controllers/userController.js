@@ -226,6 +226,21 @@ const updateUser = async (req, res) => {
   }
 }
 
+// Job Single View
+const jobSingleView =  async (req, res) => {
+  try {
+    const id = req.params.id
+     const singleJob = await jobsModel.findById(id)
+     res.status(202).json({success: true, message: "Single JOb View Successfully", singleJob})
+  }
+  catch(err){
+    console.log(err)
+    res.status(404).json({
+      success: false,
+      message: err.message
+    })
+  }
+}
 
 
 const logout = async (req, res) => {
@@ -240,5 +255,6 @@ module.exports = {
   applyForJobs,
   viewAppliedJobs,
   allJobs,
-  updateUser
+  updateUser,
+  jobSingleView
 }
