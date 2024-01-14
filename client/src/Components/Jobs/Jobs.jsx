@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllJobs } from '../../API/apiCalls';
+import UserContext from '../../Context/userContext';
+
 
 function Jobs() {
+  const  { setGetJob, getJob } = useContext(UserContext)
+  console.log(getJob)
   const [jobs, setJobs] = useState([]);
 
   const handleJobs = async () => {
     const response = await getAllJobs();
     setJobs(response.data.jobs);
+    setGetJob(response.data.jobs)
   };
 
   useEffect(() => {
@@ -35,7 +40,7 @@ function Jobs() {
                 <li><b>Date: </b></li>
                 <li>{job.startDate} - {job.endDate}</li>
               </ul>
-              <Link to={`/dashboard/applyforjob/${job._id}`} className='btn btn-primary'>
+              <Link to={`/dashboard/single-job/${job._id}`} className='btn btn-primary'>
                 View Details
               </Link>
             </div>

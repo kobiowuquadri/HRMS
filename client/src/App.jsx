@@ -18,6 +18,7 @@ import AdminDashboard from './Pages/Admin/Dashboard/AdminDashboard'
 import CreateJobs from './Pages/Admin/CretateJobs/CreateJobs'
 import UpdateProfile from './Pages/UserDashboard/UpdateProfile'
 import UserContext from './Context/userContext'
+import SingleJob from './Pages/UserDashboard/SingleJob'
 
 // function ErrorFallback ({ error }) {
 //   return (
@@ -52,6 +53,7 @@ function App () {
           <Route path='jobs' element={<ViewJobs />} />
           <Route path='applyforjob' element={<Apply />} />
           <Route path='update-profile/:id' element={<UpdateProfile />} />
+          <Route path='single-job/:id' element={<SingleJob  />} />
         </Route>
         <Route path='/admin-login' element={<AdminLogin />}></Route>
         <Route path='/admin-signup' element={<AdminRegister />}></Route>

@@ -5,6 +5,7 @@ import axios from 'axios'
 function UserContextProvider ({ children }) {
   const [user, setUser] = useState(null)
   const [admin, setAdmin] = useState(null)
+  const [getJob, setGetJob] = useState(null)
   const [authUser, setAuthUser] = useState(
     JSON.parse(localStorage.getItem('userToken'))
   )
@@ -50,7 +51,7 @@ function UserContextProvider ({ children }) {
   }
   return (
     <UserContext.Provider
-      value={{ user, setUser, logout, authUser, logoutAdmin, admin, setAdmin }}
+      value={{ user, setUser, logout, authUser, logoutAdmin, admin, setAdmin, setGetJob, getJob }}
     >
       {children}
     </UserContext.Provider>
