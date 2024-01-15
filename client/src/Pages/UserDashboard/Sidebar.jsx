@@ -35,8 +35,8 @@ const Sidebar = () => {
   const handleLogout = async () => {
     await logout()
     setTimeout(() => {
-      navigate('/login');
-    }, 0);
+      navigate('/login')
+    }, 0)
   }
 
   return (
@@ -49,29 +49,33 @@ const Sidebar = () => {
         <div className='position-sticky'>
           <MDBListGroup flush className='mx-3 mt-4'>
             <MDBRipple rippleTag='span'>
+              <Link to={'/dashboard'} className='text-white'>
               <MDBListGroupItem
                 active
                 style={{ backgroundColor: '#0174BE' }}
                 className='border-0 border-bottom rounded rounded'
               >
                 <MDBIcon fas icon='tachometer-alt me-3' />
-                <Link to={'/dashboard'} className='text-white'>Profile</Link>
+                  Profile
               </MDBListGroupItem>
+                </Link>
             </MDBRipple>
 
             <MDBRipple rippleTag='span'>
-              <MDBListGroupItem className='border-0 border-bottom rounded'>
-                <MDBIcon fas icon='chart-area me-3' />
-                <Link to='/dashboard/jobs' className='text-dark'>Jobs</Link>
-              </MDBListGroupItem>
+              <Link to='/dashboard/jobs' className='text-dark'>
+                <MDBListGroupItem className='border-0 border-bottom rounded'>
+                  <MDBIcon fas icon='chart-area me-3' />
+                  Jobs
+                </MDBListGroupItem>
+              </Link>
             </MDBRipple>
             <MDBRipple
               rippleTag='span'
               style={{ color: 'red', cursor: 'pointer' }}
+              onClick={handleLogout}
             >
               <MDBListGroupItem
                 className='border-0 rounded'
-                onClick={handleLogout}
               >
                 <MDBIcon fas icon='money-bill me-3' />
                 Logout

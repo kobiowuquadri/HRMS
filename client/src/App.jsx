@@ -1,7 +1,7 @@
 import './App.css'
 import { useState, useEffect, useContext, ErrorBoundary } from 'react'
 import Home from './Pages/Home/Home'
-import { Routes, Route, Outlet, Navigate } from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import Login from './Pages/Login/Login'
 import Register from './Pages/Register/Register'
 import Dashboard from './Pages/UserDashboard/Dashboard'
@@ -17,7 +17,6 @@ import ProtectedAdminRoutes from './Utils/adminProtectedRoutes'
 import AdminDashboard from './Pages/Admin/Dashboard/AdminDashboard'
 import CreateJobs from './Pages/Admin/CretateJobs/CreateJobs'
 import UpdateProfile from './Pages/UserDashboard/UpdateProfile'
-import UserContext from './Context/userContext'
 import SingleJob from './Pages/UserDashboard/SingleJob'
 
 // function ErrorFallback ({ error }) {
@@ -51,9 +50,9 @@ function App () {
         <Route path='/dashboard' element={<ProtectedRoutes />}>
           <Route index element={<Dashboard />}></Route>
           <Route path='jobs' element={<ViewJobs />} />
-          <Route path='applyforjob' element={<Apply />} />
           <Route path='update-profile/:id' element={<UpdateProfile />} />
-          <Route path='single-job/:id' element={<SingleJob  />} />
+          <Route path='single-job/:id' element={<SingleJob />} />
+          <Route path='apply-job/:id' element={<Apply />} />
         </Route>
         <Route path='/admin-login' element={<AdminLogin />}></Route>
         <Route path='/admin-signup' element={<AdminRegister />}></Route>

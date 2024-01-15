@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
+import Sidebar from './Sidebar'
 
 function SingleJob () {
   const [jobDetails, setJobDetails] = useState('')
@@ -33,13 +34,16 @@ function SingleJob () {
   })
 
   return (
-    <div>
-      <h1>{jobDetails.jobTitle}</h1>
-      <p>{jobDetails.jobDescription}</p>
-      <p>{jobDetails.companyName}</p>
-      <p>{jobDetails.startDate}</p>
-      <p>{jobDetails.endDate}</p>
-      <button className='btn btn-primary'>Apply Now</button>
+    <div className='board'>
+      <Sidebar />
+      <div className='main__board text-white vh-100 d-flex flex-column align-items-start p-5'>
+        <h1>{jobDetails.jobTitle}</h1>
+        <p>{jobDetails.jobDescription}</p>
+        <p>{jobDetails.companyName}</p>
+        <p>{jobDetails.startDate}</p>
+        <p>{jobDetails.endDate}</p>
+        <Link className='btn btn-primary' to={`/dashboard/apply-job/${jobDetails._id}`}>Apply Now</Link>
+      </div>
     </div>
   )
 }

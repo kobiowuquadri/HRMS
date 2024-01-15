@@ -7,15 +7,12 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBCardImage,
   MDBInput,
   MDBIcon
 } from 'mdb-react-ui-kit'
-import { applyForJob } from '../../API/apiCalls'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useNavigate } from 'react-router-dom'
-import bgApply from '../../assets/bg.jpg'
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   getStorage,
   ref,
@@ -23,6 +20,7 @@ import {
   getDownloadURL
 } from 'firebase/storage'
 import app from '../../firebase/firebase'
+import axios from 'axios'
 
 
 
@@ -31,6 +29,37 @@ function Apply () {
   const [resume, setResume] = useState('')
   const [coverLetter, setCoverLetter] = useState('')
   const [resumePercent, setResumePerecent] = useState(0)
+
+  const { id } = useParams()
+
+  // Submit Application
+
+  const applyForJob = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/api/v1/user-apply/${id}`,  // Add missing / before ${id}
+        {
+          address,
+          resume,
+          coverLetter
+        },
+        {
+          withCredentials: true,
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('userToken'))}`,
+            'Content-Type': 'multipart/form-data',  // Set content type to multipart/form-data
+          },
+        }
+      );
+  
+      return response;
+    } catch (error) {
+      console.error('Error applying for job:', error);
+      throw error;  // Rethrow the error for further handling
+    }
+  };
+  
 
   const navigate = useNavigate()
 
@@ -109,6 +138,8 @@ function Apply () {
       formData.append('resume', resume);
   
       // Add any other fields if needed
+
+
   
       await applyForJob(formData); // Update this line to send formData
   

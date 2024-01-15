@@ -50,21 +50,5 @@ export const getAllJobs = async () => {
     return response
 }
 
-// Submit Application
 
-export const applyForJob = async payload => {
-  const response = await axios.post(
-    'http://localhost:5000/api/v1/user-apply',
-    payload,
-    {
-      withCredentials: true,
-      headers : {
-        Accept: 'application/json',
-        Authorization : `Bearer ${JSON.parse(localStorage.getItem('userToken'))}`,
-        'Content-Type': 'application/json'
-      }
-    }
-  )
-  return response
-}
 
