@@ -149,9 +149,27 @@ const allJobs = async (req, res) => {
 
 const applyForJobs = async (req, res) => {
   try {
-    const { address, coverLetter } = req.body
+    const id = req.params.id
+    const { userId, address, coverLetter } = req.body
+
+    const user = await userModel.findById(userId)
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    const hasApplied = user.appliedJobs.some(application => application.equals(id))
+
+    if(hasApplied){
+      return res.status(400).json({ success: false, message: 'You have already applied for this job'})
+    }
 
     const resumeBuffer = req.file.buffer
+
+    if (!resumeBuffer) {
+      return res.status(400).json({ success: false, message: 'Resume file is required' });
+    }
+
     const resumeBase64 = resumeBuffer.toString('base64')
 
     const newApplication = new appForJobsModel({
@@ -161,6 +179,16 @@ const applyForJobs = async (req, res) => {
     })
 
     const savedApplication = await newApplication.save()
+
+    await userModel.findByIdAndUpdate(userId, {
+      $push: {
+        appliedJobs : {
+          job: id,
+          applicationStatus: 'pending',
+          applicationDate: new Date()
+        }
+      }
+    })
     res.status(202).json({
       success: true,
       message: 'Application Submitted Successfully',
@@ -168,12 +196,13 @@ const applyForJobs = async (req, res) => {
     })
   } catch (err) {
     console.error(err)
-    res.status(404).json({
+    res.status(500).json({
       success: false,
       message: err.message
     })
   }
 }
+
 
 const viewAppliedJobs = async (req, res) => {
   try {

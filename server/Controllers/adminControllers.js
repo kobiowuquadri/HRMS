@@ -44,11 +44,11 @@ const adminLogin = async (req, res) => {
     const { email, password } = req.body
     const isAdmin = await adminModel.findOne({ email })
     if (!isAdmin) {
-      res.status(401).json({ success: false, message: 'Admin not found!' })
+     return  res.status(401).json({ success: false, message: 'Admin not found!' })
     }
     const isPassword = await bcrypt.compare(password, isAdmin.password)
     if (!isPassword) {
-      re.staus(401).json({ success: false, message: 'Incorrect Password' })
+     return re.staus(401).json({ success: false, message: 'Incorrect Password' })
     }
     jwt.sign(
       { id: isAdmin._id },
@@ -69,7 +69,7 @@ const adminLogin = async (req, res) => {
     )
   } catch (err) {
     console.error(err)
-    res.status(404).json({
+     return res.status(404).json({
       success: false,
       message: err.message
     })
@@ -80,7 +80,7 @@ const adminLogin = async (req, res) => {
 
 const adminCreateJobs = async (req, res) => {
   try {
-    const { jobTitle, jobDescription, companyName, startDate, endDate } =
+    const { jobTitle, jobDescription, companyName, endDate } =
       req.body
 
       const existingJob = await jobsModel.findOne({jobDescription})
@@ -94,7 +94,6 @@ const adminCreateJobs = async (req, res) => {
       jobTitle,
       jobDescription,
       companyName,
-      startDate,
       endDate
     })
     const savedJob = await newJob.save()

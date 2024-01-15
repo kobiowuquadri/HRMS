@@ -15,8 +15,8 @@ const jobsSchema = new mongoose.Schema({
         required: true
     },
     startDate : {
-        type:String,
-        required: true
+        type:Date,
+        default: Date.now
     },
     endDate: {
         type:String,
@@ -24,8 +24,18 @@ const jobsSchema = new mongoose.Schema({
     },
     applicants: [
         {
+           applicant: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'usermodels'
+           },
+           applicationStatus: {
+            type: String,
+            enum: ["pending", "approved", "rejected"]
+           },
+           applicationDate:{
+            type: Date,
+            default: Date.now
+           }
         }
     ]
 },  { timestamps: true })

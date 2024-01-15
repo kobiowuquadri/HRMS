@@ -28,7 +28,7 @@ userRouter.get('/single-job/:id', authorizedUser, jobSingleView)
 userRouter.post('/user-logout',  logout)
 
 // User Application
-userRouter.post('/user-apply', authorizedUser, upload.single('resume'),  applyForJobs)
+userRouter.post('/user-apply/:id', authorizedUser, upload.single('resume'),  applyForJobs)
 
 userRouter.get('/getapplied-jobs/:id', authorizedUser, viewAppliedJobs)
 
