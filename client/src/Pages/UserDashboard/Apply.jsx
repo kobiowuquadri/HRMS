@@ -53,25 +53,24 @@ function Apply () {
             'Content-Type': 'application/json',
             Accept: 'application/json',
             Authorization: `Bearer ${userToken}`
-          },
+          }
         }
-      );
-  
-      console.log(response.data);
-  
+      )
+
+      console.log(response.data)
+
       if (response.data.success) {
-        toast.success('Application Successfully Submitted');
-        navigate('/dashboard/jobs');
+        toast.success('Application Successfully Submitted')
+        navigate('/dashboard/jobs')
       } else {
         // Handle server-side errors or display user-friendly messages
-        toast.error(response.data.message || 'Error submitting application');
+        toast.error(response.data.message || 'Error submitting application')
       }
     } catch (error) {
-      console.error('Error submitting application:', error);
-      toast.error('An unexpected error occurred. Please try again later.');
+      console.error('Error submitting application:', error)
+      toast.error('An unexpected error occurred. Please try again later.')
     }
-  };
-  
+  }
 
   return (
     <div className='board'>
@@ -100,25 +99,23 @@ function Apply () {
 
                   <div className='d-flex flex-row align-items-center mb-4'>
                     <MDBIcon fas icon='lock me-3' size='lg' />
-                    <MDBInput
-                      label='About yourself'
+                    <textarea
+                      className='form-control'
+                      placeholder='About yourself'
+                      rows={4}
                       value={resume}
                       onChange={e => setResume(e.target.value)}
-                      name='resume'
-                      id='form2'
-                      type='text'
                     />
                   </div>
 
                   <div className='d-flex flex-row align-items-center mb-4'>
                     <MDBIcon fas icon='lock me-3' size='lg' />
-                    <MDBInput
-                      label='Write your Cover Letter'
+                    <textarea
+                      className='form-control'
+                      placeholder='Write your Cover Letter'
+                      rows={4}
                       value={coverLetter}
                       onChange={e => setCoverLetter(e.target.value)}
-                      name='coverLetter'
-                      id='form3'
-                      type='text'
                     />
                   </div>
 
