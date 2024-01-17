@@ -18,6 +18,6 @@ const appForJobsSchema = new mongoose.Schema({
 
 
 // User Model
-const  appForJobsModel = mongoose.model(' appforjobsmodel',  appForJobsSchema)
+const  appForJobsModel = mongoose.model('appforjobsmodel',  appForJobsSchema)
 
 module.exports = appForJobsModel

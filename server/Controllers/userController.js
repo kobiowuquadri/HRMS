@@ -98,11 +98,15 @@ const userLogin = async (req, res) => {
     const { email, password } = req.body
     const isUser = await userModel.findOne({ email })
     if (!isUser) {
-     return res.status(401).json({ success: false, message: 'User not found!' })
+      return res
+        .status(401)
+        .json({ success: false, message: 'User not found!' })
     }
     const isPassword = await bcrypt.compare(password, isUser.password)
     if (!isPassword) {
-     return res.status(401).json({ success: false, message: 'Incorrect Password' })
+      return res
+        .status(401)
+        .json({ success: false, message: 'Incorrect Password' })
     }
     jwt.sign(
       { id: isUser._id },
@@ -134,47 +138,52 @@ const userLogin = async (req, res) => {
 
 const allJobs = async (req, res) => {
   try {
-    const jobs = await jobsModel.find()
-    res
-      .status(200)
-      .json({ success: true, message: 'View allJobs Successful', jobs })
+    // Access the authenticated user ID using req.user
+    const userId = req.user;
+
+    // Example: Do something with the user ID
+    console.log('Authenticated User ID:', userId);
+
+    const jobs = await jobsModel.find();
+    res.status(200).json({ success: true, message: 'View allJobs Successful', jobs });
   } catch (err) {
-    console.error(err)
-    res.status(404).json({
-      success: false,
-      msg: err.message
-    })
+    console.error(err);
+    res.status(404).json({ success: false, msg: err.message });
   }
-}
+};
+
 
 const applyForJobs = async (req, res) => {
   try {
     const id = req.params.id
-    const { userId, address, coverLetter } = req.body
+    const userId = req.user
+    console.log(userId)
+    const { address, coverLetter, resume } = req.body
+
+    console.log('userId:', userId)
+    console.log('address:', address)
+    console.log('coverLetter:', coverLetter)
+    console.log('resume:', resume)
 
     const user = await userModel.findById(userId)
-
     if (!user) {
-      return res.status(404).json({ success: false, message: 'User not found' });
+      return res.status(404).json({ success: false, message: 'User not found' })
     }
 
-    const hasApplied = user.appliedJobs.some(application => application.equals(id))
+    const hasApplied = user.appliedJobs.some(application =>
+      application.job.equals(id)
+    )
 
-    if(hasApplied){
-      return res.status(400).json({ success: false, message: 'You have already applied for this job'})
+    if (hasApplied) {
+      return res.status(400).json({
+        success: false,
+        message: 'You have already applied for this job'
+      })
     }
-
-    const resumeBuffer = req.file.buffer
-
-    if (!resumeBuffer) {
-      return res.status(400).json({ success: false, message: 'Resume file is required' });
-    }
-
-    const resumeBase64 = resumeBuffer.toString('base64')
 
     const newApplication = new appForJobsModel({
       address,
-      resume: resumeBase64,
+      resume,
       coverLetter
     })
 
@@ -182,7 +191,7 @@ const applyForJobs = async (req, res) => {
 
     await userModel.findByIdAndUpdate(userId, {
       $push: {
-        appliedJobs : {
+        appliedJobs: {
           job: id,
           applicationStatus: 'pending',
           applicationDate: new Date()
@@ -196,13 +205,13 @@ const applyForJobs = async (req, res) => {
     })
   } catch (err) {
     console.error(err)
+    console.log("message" + err.message)
     res.status(500).json({
       success: false,
       message: err.message
     })
   }
 }
-
 
 const viewAppliedJobs = async (req, res) => {
   try {
@@ -234,15 +243,19 @@ const updateUser = async (req, res) => {
       DOB,
       phoneNumber
     } = req.body
-    const updatedUser = await userModel.findByIdAndUpdate(id, {
-      email,
-      name,
-      currentJob,
-      jobDescription,
-      qualification,
-      DOB,
-      phoneNumber
-    }, {new: true})
+    const updatedUser = await userModel.findByIdAndUpdate(
+      id,
+      {
+        email,
+        name,
+        currentJob,
+        jobDescription,
+        qualification,
+        DOB,
+        phoneNumber
+      },
+      { new: true }
+    )
     res
       .status(202)
       .json({ success: true, message: 'Update User Successfully', updatedUser })
@@ -256,13 +269,16 @@ const updateUser = async (req, res) => {
 }
 
 // Job Single View
-const jobSingleView =  async (req, res) => {
+const jobSingleView = async (req, res) => {
   try {
     const id = req.params.id
-     const singleJob = await jobsModel.findById(id)
-     res.status(202).json({success: true, message: "Single JOb View Successfully", singleJob})
-  }
-  catch(err){
+    const singleJob = await jobsModel.findById(id)
+    res.status(202).json({
+      success: true,
+      message: 'Single JOb View Successfully',
+      singleJob
+    })
+  } catch (err) {
     console.log(err)
     res.status(404).json({
       success: false,
@@ -270,7 +286,6 @@ const jobSingleView =  async (req, res) => {
     })
   }
 }
-
 
 const logout = async (req, res) => {
   res.cookie('userId', '', { maxAge: 0, httpOnly: true })
