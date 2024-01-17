@@ -13,143 +13,64 @@ import {
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate, useParams } from 'react-router-dom'
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL
-} from 'firebase/storage'
-import app from '../../firebase/firebase'
 import axios from 'axios'
-
-
 
 function Apply () {
   const [address, setAddress] = useState('')
   const [resume, setResume] = useState('')
   const [coverLetter, setCoverLetter] = useState('')
-  const [resumePercent, setResumePerecent] = useState(0)
+  // const [userId, setUserId] = useState(null)
 
   const { id } = useParams()
 
   // Submit Application
 
-  const applyForJob = async () => {
+  const navigate = useNavigate()
+
+  // useEffect(async () => {
+  //   // Fetch the user token from localStorage or wherever you store it
+  //   const userToken = localStorage.getItem('userToken')
+
+  //   if (userToken) {
+  //     const decodedToken = await jwt.decode(userToken)
+  //     setUserId(decodedToken.id)
+  //   }
+  // }, []) // Run this effect once when the component mounts
+
+  const userToken = JSON.parse(localStorage.getItem('userToken'))
+  const handleApply = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/v1/user-apply/${id}`,  // Add missing / before ${id}
+        `http://localhost:5000/api/v1/user-apply/${id}`,
         {
-          address,
           resume,
+          address,
           coverLetter
         },
         {
           withCredentials: true,
           headers: {
+            'Content-Type': 'application/json',
             Accept: 'application/json',
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem('userToken'))}`,
-            'Content-Type': 'multipart/form-data',  // Set content type to multipart/form-data
+            Authorization: `Bearer ${userToken}`
           },
         }
       );
   
-      return response;
-    } catch (error) {
-      console.error('Error applying for job:', error);
-      throw error;  // Rethrow the error for further handling
-    }
-  };
+      console.log(response.data);
   
-
-  const navigate = useNavigate()
-
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setResume(selectedFile);
-  };
-  
-
-  const uploadFile = (file, fileType) => {
-    const storage = getStorage(app)
-    // Upload file and metadata to the object 'images/mountains.jpg'
-
-    // Define metadata here
-    const metadata = {
-      // Add any additional metadata properties you need
-      contentType: file.type
-    }
-
-    const storageRef = ref(storage, 'resume/' + file.name)
-    const uploadTask = uploadBytesResumable(storageRef, file, metadata)
-
-    // Listen for state changes, errors, and completion of the upload.
-    uploadTask.on(
-      'state_changed',
-      snapshot => {
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        fileType === 'resumeUrl' ? setResumePerecent(Math.round(progress)) : ''
-        console.log('Upload is ' + progress + '% done')
-        switch (snapshot.state) {
-          case 'paused':
-            console.log('Upload is paused')
-            break
-          case 'running':
-            console.log('Upload is running')
-            break
-        }
-      },
-      error => {
-        // A full list of error codes is available at
-        // https://firebase.google.com/docs/storage/web/handle-errors
-        switch (error.code) {
-          case 'storage/unauthorized':
-            // User doesn't have permission to access the object
-            break
-          case 'storage/canceled':
-            // User canceled the upload
-            break
-
-          // ...
-
-          case 'storage/unknown':
-            // Unknown error occurred, inspect error.serverResponse
-            break
-        }
-      },
-      () => {
-        // Upload completed successfully, now we can get the download URL
-        getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-          console.log('File available at', downloadURL)
-        })
+      if (response.data.success) {
+        toast.success('Application Successfully Submitted');
+        navigate('/dashboard/jobs');
+      } else {
+        // Handle server-side errors or display user-friendly messages
+        toast.error(response.data.message || 'Error submitting application');
       }
-    )
-  }
-
-  useEffect(() => {
-    resume && uploadFile(resume, 'resumeUrl')
-  }, [resume])
-
-  const handleApply = async () => {
-    try {
-      const formData = new FormData();
-      formData.append('address', address);
-      formData.append('coverLetter', coverLetter);
-      formData.append('resume', resume);
-  
-      // Add any other fields if needed
-
-
-  
-      await applyForJob(formData); // Update this line to send formData
-  
-      toast.success('Application Successfully Submitted');
-      navigate('/dashboard/jobs');
     } catch (error) {
       console.error('Error submitting application:', error);
-      // Handle error, show an error toast, etc.
+      toast.error('An unexpected error occurred. Please try again later.');
     }
-  }
+  };
   
 
   return (
@@ -160,10 +81,7 @@ function Apply () {
           <MDBCard className='text-black m-5' style={{ borderRadius: '25px' }}>
             <MDBCardBody>
               <MDBRow>
-                <MDBCol
-                 
-                  className='order-2 order-lg-1 d-flex flex-column align-items-center'
-                >
+                <MDBCol className='order-2 order-lg-1 d-flex flex-column align-items-center'>
                   <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>
                     Apply for Job
                   </p>
@@ -182,14 +100,13 @@ function Apply () {
 
                   <div className='d-flex flex-row align-items-center mb-4'>
                     <MDBIcon fas icon='lock me-3' size='lg' />
-                    {resumePercent > 0 && 'Uploading: ' + resumePercent + '%'}
                     <MDBInput
-                      accept='.pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-                      
-                      onChange={handleFileChange}
+                      label='About yourself'
+                      value={resume}
+                      onChange={e => setResume(e.target.value)}
                       name='resume'
-                      id='form3'
-                      type='file'
+                      id='form2'
+                      type='text'
                     />
                   </div>
 
