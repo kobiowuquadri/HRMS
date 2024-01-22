@@ -2,22 +2,22 @@ import React from 'react'
 
 const card = [
   {
-    image: '../../../public/Assets/team2.png',
+    image: '/Assets/team2.png',
     name: 'Quadri Kobiowu',
     desc: 'A Software Developer'
   },
   {
-    image: '../../../public/Assets/team1.png',
+    image: '/Assets/team1.png',
     name: 'Simon Azike',
     desc: 'A project Manager'
   },
   {
-    image: '../../../public/Assets/team2.png',
+    image: '/Assets/team2.png',
     name: 'Simo Mohammad',
     desc: 'An PHP developer'
   },
   {
-    image: '../../../public/Assets/team1.png',
+    image: '/Assets/team1.png',
     name: 'Sodiq Kobiowu',
     desc: 'Frontend Developer'
   }
