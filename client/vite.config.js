@@ -51,8 +51,5 @@ export default defineConfig({
   esbuild: {
     jsxFactory: 'React.createElement',
     jsxFragment: 'React.Fragment',
-    loader: {
-      '.js': 'jsx', // Add this line to enable JSX syntax for .js files
-    },
   },
 });
