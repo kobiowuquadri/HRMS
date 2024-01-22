@@ -1,10 +1,8 @@
 import React from 'react'
 import Header from '../../Components/Header/Header'
 import './home.scss'
-import bgImage from '../../assets/bg.jpg'
 import Footer from '../../Components/Footer/Footer'
 import About from '../../Components/About/About'
-import Jobs from '../../Components/Jobs/Jobs'
 import { TypeAnimation } from 'react-type-animation'
 import { Link } from 'react-router-dom'
 import Team from '../../Components/Team/Team'
@@ -44,12 +42,8 @@ function Home () {
             <button id='getStartedBtn'><Link to={'/login'} className='text-white'>Get Started</Link></button>
           </div>
         </div>
-        {/* <div className='home_image'>
-          <img src={bgImage} alt='' />
-        </div> */}
       </div>
       <About />
-      {/* <Jobs /> */}
       <Team/>
       <Footer />
     </div>
