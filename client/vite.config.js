@@ -1,49 +1,56 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { VitePWA } from "vite-plugin-pwa";
+import React from 'react';
 
-const manifestForPlugIn = {
-  registerType:'prompt',
-  includeAssests:['favicon.ico', "apple-touc-icon.png", "masked-icon.svg"],
-  manifest:{
-    name:"React-vite-app",
-    short_name:"react-vite-app",
-    description:"I am a simple vite app",
-    icons:[{
-      src: '/android-chrome-192x192.png',
-      sizes:'192x192',
-      type:'image/png',
-      purpose:'favicon'
-    },
-    {
-      src:'/android-chrome-512x512.png',
-      sizes:'512x512',
-      type:'image/png',
-      purpose:'favicon'
-    },
-    {
-      src: '/apple-touch-icon.png',
-      sizes:'180x180',
-      type:'image/png',
-      purpose:'apple touch icon',
-    },
-    {
-      src: '/maskable_icon.png',
-      sizes:'512x512',
-      type:'image/png',
-      purpose:'any maskable',
-    }
-  ],
-  theme_color:'#171717',
-  background_color:'#f0e7db',
-  display:"standalone",
-  scope:'/',
-  start_url:"/",
-  orientation:'portrait'
-  }
+const card = [
+  {
+    image: 'team2.png',
+    name: 'Quadri Kobiowu',
+    desc: 'A Software Developer',
+  },
+  {
+    image: 'team1.png',
+    name: 'Simon Azike',
+    desc: 'A project Manager',
+  },
+  {
+    image: 'team2.png',
+    name: 'Simo Mohammad',
+    desc: 'An PHP developer',
+  },
+  {
+    image: 'team1.png',
+    name: 'Sodiq Kobiowu',
+    desc: 'Frontend Developer',
+  },
+];
+
+function Team() {
+  return (
+    <div className='container p-5'>
+      <h1 className='p-4 text-center fw-bold'>Meet Our Team</h1>
+      <div className='row row-cols-1 row-cols-lg-4 pb-3'>
+        {card.map((team, index) => {
+          return (
+            <div
+              data-aos='flip-left'
+              key={index}
+              className='d-flex justify-content-center shadow p-5 flex-column text-center align-items-center'
+            >
+              <p>
+                <img
+                  width={'150px'}
+                  src={`${import.meta.env.BASE_URL}assets/${team.image}`}
+                  alt='my-image'
+                />
+              </p>
+              <p>{team.name}</p>
+              <p>{team.desc}</p>
+              <button className='btn btn-blue text-white'>Connect</button>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react(), VitePWA(manifestForPlugIn)],
-})
+export default Team;
