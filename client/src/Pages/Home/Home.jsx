@@ -20,9 +20,7 @@ function Home () {
                 'Job Hunting...', // Types 'One'
                 1000, // Waits 1s
                 'Exploration...', // Deletes 'One' and types 'Two'
-                2000, // Waits 2s
-                'Career Advancement...', // Types 'Three' without deleting 'Two'
-                3000,
+                2000,
                 () => {
                   console.log('Sequence completed')
                 }
