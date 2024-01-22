@@ -12,7 +12,7 @@ const port = process.env.PORT
 
 // Middlewares
 app.use(cors({
-    origin: 'https://hrms-client-self.vercel.app/',
+    origin: 'https://hrms-client-self.vercel.app',
     credentials: true
 }))
 app.use(express.json())
