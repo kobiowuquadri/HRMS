@@ -2,7 +2,7 @@ import React from 'react'
 
 const card = [
   {
-    image: '../../../public/assets/team2.jpg',
+    image: '../../../src/assets/team2.png',
     name: 'Quadri Kobiowu',
     desc: 'A Software Developer'
   },
