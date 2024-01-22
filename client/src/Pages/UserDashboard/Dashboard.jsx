@@ -18,7 +18,7 @@ import {
   MDBListGroupItem
 } from 'mdb-react-ui-kit'
 import UserContext from '../../Context/userContext'
-import profileImage from '../../assets/profileImage.png'
+import profileImage from '../../../public/Assets/profileImage.png'
 import { TypeAnimation } from 'react-type-animation'
 import { Outlet, Link } from 'react-router-dom';
 

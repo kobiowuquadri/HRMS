@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
-import menuIcon from '../.././assets/icon-menu.svg'
-import closeIcon from '../.././assets/icon-close.svg'
+import menuIcon from '../../../public/Assets/icon-menu.svg'
+import closeIcon from '../../../public/Assets/icon-close.svg'
 import './header.scss'
 import { AiOutlineClose } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
