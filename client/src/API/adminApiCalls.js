@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const adminRegister = (payload) => {
-  const response = axios.post('http://localhost:5000/api/v1/admin-register', payload, {
+  const response = axios.post('https://hrms-server-gilt.vercel.app/api/v1/admin-register', payload, {
     withCredentials: true
   })
 
@@ -11,7 +11,7 @@ export const adminRegister = (payload) => {
 
 export const adminLogin = async payload => {
     const response = await axios.post(
-      'http://localhost:5000/api/v1/admin-login',
+      'https://hrms-server-gilt.vercel.app/api/v1/admin-login',
       payload,
       {
         withCredentials: true
@@ -27,7 +27,7 @@ export const adminLogin = async payload => {
   }
 
 export const getAllUsers = async () => {
-  const response = await axios.get('http://localhost:5000/api/v1/admin-all-users', {
+  const response = await axios.get('https://hrms-server-gilt.vercel.app/api/v1/admin-all-users', {
     withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export const getAllUsers = async () => {
   return response
 }
 export const getAllJobs = async () => {
-  const response = await axios.get('http://localhost:5000/api/v1/admin-total-jobs', {
+  const response = await axios.get('https://hrms-server-gilt.vercel.app/api/v1/admin-total-jobs', {
     withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export const getAllJobs = async () => {
 
 export const adminCreateJobs = async payload => {
   const response = await axios.post(
-    'http://localhost:5000/api/v1/admin-create-jobs',
+    'https://hrms-server-gilt.vercel.app/api/v1/admin-create-jobs',
     payload,
     {
       withCredentials: true,

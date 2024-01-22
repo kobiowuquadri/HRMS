@@ -10,7 +10,7 @@ function SingleJob () {
   const handleJob = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/v1/single-job/${id}`,
+        `https://hrms-server-gilt.vercel.app/api/v1/single-job/${id}`,
         {
           withCredentials: true,
           headers: {

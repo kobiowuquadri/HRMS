@@ -37,7 +37,7 @@ function UpdateProfile () {
   const updateProfile = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/update-user/${id}`,
+        `https://hrms-server-gilt.vercel.app/api/v1/update-user/${id}`,
         {
           email,
           name,

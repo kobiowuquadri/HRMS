@@ -41,7 +41,7 @@ function Apply () {
   const handleApply = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/v1/user-apply/${id}`,
+        `https://hrms-server-gilt.vercel.app/api/v1/user-apply/${id}`,
         {
           resume,
           address,
