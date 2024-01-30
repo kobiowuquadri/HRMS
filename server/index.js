@@ -19,6 +19,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 
+// Home
+app.get('/', (req, res) => {
+    res.send('Connected to Backend Successfully.')
+})
 // Routes
 app.use('/api/v1', userRouter)
 app.use('/api/v1', adminRouter)
