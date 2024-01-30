@@ -13,36 +13,43 @@ function Home () {
       <Header />
       <div className='home_layout'>
         <div className='home_content'>
-          <h1>
-            Easy&nbsp;
-            <TypeAnimation
-              sequence={[
-                'Job Hunting...', // Types 'One'
-                1000, // Waits 1s
-                'Exploration...', // Deletes 'One' and types 'Two'
-                2000,
-                () => {
-                  console.log('Sequence completed')
-                }
-              ]}
-              wrapper='span'
-              cursor={true}
-              repeat={Infinity}
-              style={{ color: '#0174BE', textAlign: 'center' }}
-            />
+          <h1 id='home_typer'>
+            <span>Easy&nbsp; </span>
+            <span>
+              <TypeAnimation
+                sequence={[
+                  'Job Hunting...', // Types 'One'
+                  1000, // Waits 1s
+                  'Exploration...', // Deletes 'One' and types 'Two'
+                  2000,
+                  () => {
+                    console.log('Sequence completed')
+                  }
+                ]}
+                wrapper='span'
+                cursor={true}
+                repeat={Infinity}
+                style={{ color: '#0174BE', textAlign: 'center' }}
+              />
+            </span>
           </h1>
           <p>
-            DeHireventures is a mobile-optimized platform for seamless hiring and
-            job hunting, offering easy search, application, and profile creation
-            for <em  style={{ color: '#0174BE'}}>job seekers</em> and &nbsp; <em  style={{ color: '#0174BE'}}>HR administrators.</em>
+            DeHireventures is a mobile-optimized platform for seamless hiring
+            and job hunting, offering easy search, application, and profile
+            creation for <em style={{ color: '#0174BE' }}>job seekers</em> and
+            &nbsp; <em style={{ color: '#0174BE' }}>HR administrators.</em>
           </p>
           <div className='btns'>
-            <button id='getStartedBtn'><Link to={'/login'} className='text-white'>Get Started</Link></button>
+            <button id='getStartedBtn'>
+              <Link to={'/login'} className='text-white'>
+                Get Started
+              </Link>
+            </button>
           </div>
         </div>
       </div>
       <About />
-      <Team/>
+      <Team />
       <Footer />
     </div>
   )
