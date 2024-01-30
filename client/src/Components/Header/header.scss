@@ -227,6 +227,13 @@
 }
 
 @media (max-width: 768px) {
+  .header_home {
+    padding: 20px;
+
+    #logo{
+      font-size: 1.5rem;
+    }
+  }
   #menuBar {
     display: flex;
   }
