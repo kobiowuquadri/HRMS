@@ -22,7 +22,7 @@ import {
   MDBDropdownLink,
   MDBListGroupItem
 } from 'mdb-react-ui-kit'
-import logoIcon from '../../../public/Assets/logo.svg'
+import logoIcon from '../../Assets/Images/logo.svg'
 import UserContext from '../../Context/userContext'
 
 const Sidebar = () => {

@@ -1,21 +1,21 @@
 [
     {
-      "image": "/Assets/team2.png",
+      "image": "../Images/team1.png",
       "name": "Quadri Kobiowu",
       "desc": "A Software Developer"
     },
     {
-      "image": "/Assets/team1.png",
+      "image": "../Images/team1.png",
       "name": "Simon Azike",
       "desc": "A Project Manager"
     },
     {
-      "image": "/Assets/team2.png",
+      "image": "../Images/team2.png",
       "name": "Simo Mohammad",
       "desc": "A PHP Developer"
     },
     {
-      "image": "/Assets/team1.png",
+      "image": "../Images/team1.png",
       "name": "Sodiq Kobiowu",
       "desc": "Frontend Developer"
     }
