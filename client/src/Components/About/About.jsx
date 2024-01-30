@@ -1,5 +1,5 @@
 import React from 'react'
-import bgImage from '../../../public/Assets/team_images.jpeg'
+import bgImage from '/Assets/team_images.jpeg'
 import './about.scss'
 import { Link } from 'react-router-dom'
 
