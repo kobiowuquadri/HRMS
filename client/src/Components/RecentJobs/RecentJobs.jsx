@@ -36,7 +36,7 @@ function RecentJobs () {
     <div className='row container-fluid'>
       <h4 className='text-center fw-bold fs-3 p-4'>Recent Jobs</h4>
       {recentJob.map((job, index) => (
-        <div key={index} className='mb-3 mb-md-0 col-lg-6 col-12 p-2'>
+        <div key={index} className='mb-3 mb-md-0 col-lg-6 col-12 p-2 shadow-4'>
           <div className='card'>
             <div className='card-body'>
               <h5 className='card-title'>

@@ -1,23 +1,13 @@
 [
-    {
-      "image": "../../../src/Assets/Images/team2.png",
-      "name": "Quadri Kobiowu",
-      "desc": "A Software Developer"
-    },
-    {
-      "image": "../../../src/Assets/Images/team1.png",
-      "name": "Simon Azike",
-      "desc": "A Project Manager"
-    },
-    {
-      "image": "../../../src/Assets/Images/team2.png",
-      "name": "Simo Mohammad",
-      "desc": "A PHP Developer"
-    },
-    {
-      "image": "../../../src/Assets/Images/team1.png",
-      "name": "Sodiq Kobiowu",
-      "desc": "Frontend Developer"
+  {
+    "name": "Quadri Kobiowu",
+    "title": "Fullstack Developer",
+    "desc": "I am Passionate about crafting seamless user experiences and delivering solution-driven strategies.\n\nOver 3 years in frontend, more than a year in backend, specializing in M.E.R.N Stack.\n\nDesigning captivating interfaces, optimizing performance, ensuring accessibility.\n\nSeeking entry-level or part-time opportunities.\n\nProficient in Typescript, constantly enhancing my skill set.\n\nExcited about making a positive impact on teams and projects.",
+    "socialMedia": {
+      "github": "https://github.com/kobiowuquadri",
+      "linkedin": "https://www.linkedin.com/in/quadri-kobiowu-955313233/",
+      "twitter": "https://twitter.com/QuadriKobiowu",
+      "whatsapp": "2349157750858"
     }
-  ]
-  
+  }
+]
