@@ -4,3 +4,7 @@
   font-weight: 700;
   font-style: normal;
 }
+
+body {
+  max-width: 100%;
+}

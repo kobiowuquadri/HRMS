@@ -33,15 +33,6 @@ export const userLogin = async payload => {
   return response
 }
 
-export const getTopSixRecentJobs = async () => {
-  const response = await axios.get('https://hrms-server-gilt.vercel.app/api/v1/recent-jobs', {
-    withCredentials: true,
-  }
-  )
-  console.log(response.data)
-  return response
-}
-
 
 
 // View all Jobs
