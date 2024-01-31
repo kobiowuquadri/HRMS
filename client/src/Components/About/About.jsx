@@ -9,7 +9,7 @@ function About () {
       <div className='about_me d-flex align-items-center gap-5 justify-content-between'>
         <div className='col'>
           <h4 className='display-6 fw-bold text-center p-2'>
-            About DeHireventures
+            <i>About DeHireventures</i>
           </h4>
           <p data-aos="fade-up-right" className='fs-4 text-center' >
             Welcome to DeHireventures, where we redefine the future of hiring and
