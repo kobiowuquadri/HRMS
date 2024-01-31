@@ -19,9 +19,9 @@ function Home () {
             <span>
               <TypeAnimation
                 sequence={[
-                  'Job Hunting...', // Types 'One'
+                  'Job Hunt', // Types 'One'
                   1000, // Waits 1s
-                  'Exploration...', // Deletes 'One' and types 'Two'
+                  'Explore', // Deletes 'One' and types 'Two'
                   2000,
                   () => {
                     console.log('Sequence completed')
@@ -34,6 +34,7 @@ function Home () {
               />
             </span>
           </h1>
+
           <p>
             DeHireventures is a mobile-optimized platform for seamless hiring
             and job hunting, offering easy search, application, and profile
@@ -50,7 +51,7 @@ function Home () {
         </div>
       </div>
       <About />
-      <RecentJobs/>
+      <RecentJobs />
       <Team />
       <Footer />
     </div>
