@@ -14,7 +14,7 @@ function Home () {
       <div className='home_layout'>
         <div className='home_content'>
           <h1 id='home_typer'>
-            <span>Easy&nbsp; </span>
+            <span>Easy </span>
             <span>
               <TypeAnimation
                 sequence={[

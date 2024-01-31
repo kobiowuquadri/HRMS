@@ -4,13 +4,13 @@
     position: relative;
     top: 30px;
     display: flex;
-    // gap:50px;
+    gap:50px;
     width: 100%;
-    height: 600px;
+    height: 100vh;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: url('../../Assets/Images/bg.jpg') center no-repeat;
+    background: url('../../Assets/Images/company1.jpeg') center no-repeat;
     background-size: cover;
     background-blend-mode: multiply;
     background-color:rgba(0,0,0,0.7);
