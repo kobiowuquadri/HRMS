@@ -31,7 +31,7 @@ function RecentJobs () {
     handleRecentJobs()
   }, [])
 
-
+  
   return (
     <div className='row container-fluid'>
       <h4 className='text-center fw-bold fs-3 p-4'>Recent Jobs</h4>
@@ -58,7 +58,12 @@ function RecentJobs () {
                   {job.startDate} - {job.endDate}
                 </li>
               </ul>
-          
+              <Link
+                to={`/dashboard/single-job/${job._id}`}
+                className='btn btn-primary'
+              >
+                View Details
+              </Link>
             </div>
           </div>
         </div>
