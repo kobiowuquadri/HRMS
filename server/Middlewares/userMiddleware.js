@@ -8,7 +8,7 @@ const authorizedUser = (req, res, next) => {
     jwt.verify(token, process.env.SECRET, async (err, decodedToken) => {
       if (err) {
         console.log(err.message)
-        return res.status(401).send({ auth: false, message: 'UnAuthorized.' })
+        return res.status(400).json({ auth: false, message: 'UnAuthorized.' })
       }
 
       if (decodedToken) {
@@ -19,12 +19,12 @@ const authorizedUser = (req, res, next) => {
         next()
       } else {
         console.log('Decoded token is undefined')
-        return res.status(401).send({ auth: false, message: 'UnAuthorized.' })
+        return res.status(404).json({ auth: false, message: 'UnAuthorized.' })
       }
     })
   } catch (err) {
     console.log(err.message)
-    return res.status(401).send({ auth: false, message: 'UnAuthorized.' })
+    return res.status(400).json({ auth: false, message: 'UnAuthorized.' })
   }
 }
 

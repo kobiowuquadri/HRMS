@@ -139,19 +139,20 @@ const userLogin = async (req, res) => {
 const allJobs = async (req, res) => {
   try {
     // Access the authenticated user ID using req.user
-    const userId = req.user;
+    const userId = req.user
 
     // Example: Do something with the user ID
-    console.log('Authenticated User ID:', userId);
+    console.log('Authenticated User ID:', userId)
 
-    const jobs = await jobsModel.find();
-    res.status(200).json({ success: true, message: 'View allJobs Successful', jobs });
+    const jobs = await jobsModel.find()
+    res
+      .status(200)
+      .json({ success: true, message: 'View allJobs Successful', jobs })
   } catch (err) {
-    console.error(err);
-    res.status(404).json({ success: false, msg: err.message });
+    console.error(err)
+    res.status(404).json({ success: false, msg: err.message })
   }
-};
-
+}
 
 const applyForJobs = async (req, res) => {
   try {
@@ -205,7 +206,7 @@ const applyForJobs = async (req, res) => {
     })
   } catch (err) {
     console.error(err)
-    console.log("message" + err.message)
+    console.log('message' + err.message)
     res.status(500).json({
       success: false,
       message: err.message
@@ -287,6 +288,28 @@ const jobSingleView = async (req, res) => {
   }
 }
 
+const getRecentJobs = async (req, res) => {
+  try {
+    const days = req.query.days || 7
+    const fromDate = new Date(new Date() - days * 24 * 60 * 60 * 1000)
+    const recentJobs = await jobsModel
+      .find({ createdAt: { $gte: fromDate } })
+      .sort({ createdAt: -1 })
+      .limit(6)
+    res.status(200).json({
+      success: true,
+      message: `Recent Jobs in the last ${days} days`,
+      recentJobs
+    })
+  } catch (err) {
+    console.log(err.message)
+    re.status(404).json({
+      success: false,
+      message: err.message
+    })
+  }
+}
+
 const logout = async (req, res) => {
   res.cookie('userId', '', { maxAge: 0, httpOnly: true })
   res.status(200).json({ success: true, message: 'Logged out successfully' })
@@ -300,5 +323,6 @@ module.exports = {
   viewAppliedJobs,
   allJobs,
   updateUser,
-  jobSingleView
+  jobSingleView,
+  getRecentJobs
 }

@@ -1,6 +1,6 @@
 const express = require('express')
 const userRouter = express.Router()
-const {userRegister, userLogin, allJobs, logout, applyForJobs, viewAppliedJobs, updateUser, jobSingleView} = require('../Controllers/userController')
+const {userRegister, userLogin, allJobs, logout, applyForJobs, viewAppliedJobs, updateUser, jobSingleView, getRecentJobs} = require('../Controllers/userController')
 const authorizedUser = require('../Middlewares/userMiddleware')
 
 
@@ -18,6 +18,8 @@ userRouter.put('/update-user/:id', authorizedUser, updateUser)
 
 userRouter.post('/user-apply/:id', authorizedUser, applyForJobs)
 
+// get recent jobs
+userRouter.get('/recent-jobs', getRecentJobs)
 
 // View Single Job
 userRouter.get('/single-job/:id', authorizedUser, jobSingleView)

@@ -44,11 +44,11 @@ const adminLogin = async (req, res) => {
     const { email, password } = req.body
     const isAdmin = await adminModel.findOne({ email })
     if (!isAdmin) {
-     return  res.status(401).json({ success: false, message: 'Admin not found!' })
+     return res.status(401).json({ success: false, message: 'Admin not found!' })
     }
     const isPassword = await bcrypt.compare(password, isAdmin.password)
     if (!isPassword) {
-     return re.staus(401).json({ success: false, message: 'Incorrect Password' })
+     return res.staus(401).json({ success: false, message: 'Incorrect Password' })
     }
     jwt.sign(
       { id: isAdmin._id },
@@ -85,7 +85,7 @@ const adminCreateJobs = async (req, res) => {
 
       const existingJob = await jobsModel.findOne({jobDescription})
       if(existingJob){
-        return  res.status(404).json({
+        return res.status(404).json({
           success: false,
           message: "Job already exist."
         })
