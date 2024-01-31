@@ -6,6 +6,7 @@ import About from '../../Components/About/About'
 import { TypeAnimation } from 'react-type-animation'
 import { Link } from 'react-router-dom'
 import Team from '../../Components/Team/Team'
+import RecentJobs from '../../Components/RecentJobs/RecentJobs'
 
 function Home () {
   return (
@@ -49,6 +50,7 @@ function Home () {
         </div>
       </div>
       <About />
+      <RecentJobs/>
       <Team />
       <Footer />
     </div>
