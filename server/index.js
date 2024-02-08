@@ -10,6 +10,8 @@ const cookieParser = require('cookie-parser')
 
 const port = process.env.PORT
 
+// const BASE_URL = 'https://example.com/api';
+
 // Middlewares
 app.use(cors({
     origin: 'https://hrms-client-self.vercel.app',

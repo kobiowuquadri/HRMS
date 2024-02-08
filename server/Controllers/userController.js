@@ -34,6 +34,7 @@ const userRegister = async (req, res) => {
       DOB,
       phoneNumber
     } = req.body
+    const  profileImage = req.file
     const existingUser = await userModel.findOne({ email })
     if (existingUser) {
       return res
@@ -52,7 +53,8 @@ const userRegister = async (req, res) => {
       jobDescription,
       qualification,
       DOB,
-      phoneNumber
+      phoneNumber,
+      profileImage
     })
     const savedUser = await newUser.save()
 
