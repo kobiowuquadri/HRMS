@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
 const appForJobsModel = require('../Models/applyForJbs')
 const jobsModel = require('../Models/createJobs')
+const path = require('path')
 
 const period = 1000 * 60 * 60 * 24 * 3
 
@@ -24,6 +25,12 @@ const handleErrors = err => {
 
 const userRegister = async (req, res) => {
   try {
+    const image = req.file
+    if (!image) {
+      return res
+        .status(400)
+        .json({ success: false, message: "No image file provided!" })
+    }
     const {
       email,
       name,
@@ -34,7 +41,6 @@ const userRegister = async (req, res) => {
       DOB,
       phoneNumber
     } = req.body
-    const  profileImage = req.file
     const existingUser = await userModel.findOne({ email })
     if (existingUser) {
       return res
@@ -54,7 +60,7 @@ const userRegister = async (req, res) => {
       qualification,
       DOB,
       phoneNumber,
-      profileImage
+      path: image.path.replace(/\\/g, "/").replace("public/", "")
     })
     const savedUser = await newUser.save()
 

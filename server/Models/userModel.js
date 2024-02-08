@@ -45,9 +45,9 @@ const userSchema = new mongoose.Schema(
       type: Number,
       required: [true, 'Please enter a phone number']
     },
-    profileImage : {
-       type: String,
-       required: true
+    path: {
+      type: String,
+      required: true
     },
     appliedJobs: [
       {
