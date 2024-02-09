@@ -26,7 +26,12 @@ function Register () {
   const [jobDescription, setJobDescription] = useState('')
   const [qualification, setQualification] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
+  const [profile, setProfile] = useState('')
   const [DOB, setDOB] = useState('')
+
+  const handleProfileImageChange = (e) => {
+     setProfile(e.target.files[0])
+  }
 
   const navigate = useNavigate()
 
@@ -40,6 +45,7 @@ function Register () {
       jobDescription,
       qualification,
       phoneNumber,
+      profile,
       DOB
     })
     toast.success("Registration Successfully")
@@ -143,6 +149,17 @@ function Register () {
                     type='number'
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     value={phoneNumber}
+                  />
+                </div>
+
+                <div className='d-flex flex-row align-items-center mb-4'>
+                  <MDBIcon fas icon='lock me-3' size='lg' />
+                  <MDBInput
+                    label='ProfileImage'
+                    name='path'
+                    id='form3'
+                    type='file'
+                    onChange={handleProfileImageChange}
                   />
                 </div>
 
