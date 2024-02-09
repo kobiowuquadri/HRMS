@@ -26,11 +26,11 @@ function Register () {
   const [jobDescription, setJobDescription] = useState('')
   const [qualification, setQualification] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
-  const [profile, setProfile] = useState('')
+  const [path, setPath] = useState(null)
   const [DOB, setDOB] = useState('')
 
   const handleProfileImageChange = (e) => {
-     setProfile(e.target.files[0])
+     setPath(e.target.files[0])
   }
 
   const navigate = useNavigate()
@@ -45,7 +45,7 @@ function Register () {
       jobDescription,
       qualification,
       phoneNumber,
-      profile,
+      path,
       DOB
     })
     toast.success("Registration Successfully")
