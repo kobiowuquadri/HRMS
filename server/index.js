@@ -10,11 +10,14 @@ const cookieParser = require('cookie-parser')
 
 const port = process.env.PORT
 
-// const BASE_URL = 'https://example.com/api';
+const BASE_URL = 'http://localhost:5173';
+
+// remode db
+//  mongodb+srv://Dehireventure:OcaRXa7uUXo3PiEG@atlascluster.0d2q4pl.mongodb.net/Dehireventure-DB
 
 // Middlewares
 app.use(cors({
-    origin: 'https://hrms-client-self.vercel.app',
+    origin: `${BASE_URL}`,
     credentials: true
 }))
 app.use(express.json())
