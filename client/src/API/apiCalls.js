@@ -1,12 +1,11 @@
 import axios from 'axios'
-import { useContext } from 'react'
-import UserContext from '../Context/userContext'
 
-// const { user } = useContext(UserContext)
+
+const BASE_URL = 'http://localhost:5000'
 
 export const userRegister = async payload => {
   const response = await axios.post(
-    'https://hrms-server-gilt.vercel.app/api/v1/user-register',
+    `${BASE_URL}/api/v1/user-register`,
     payload,
     {
       withCredentials: true
@@ -18,7 +17,7 @@ export const userRegister = async payload => {
 
 export const userLogin = async payload => {
   const response = await axios.post(
-    'https://hrms-server-gilt.vercel.app/api/v1/user-login',
+    `${BASE_URL}/api/v1/user-login`,
     payload,
     {
       withCredentials: true
@@ -38,7 +37,7 @@ export const userLogin = async payload => {
 // View all Jobs
 
 export const getAllJobs = async () => {
-    const response = await axios.get('https://hrms-server-gilt.vercel.app/api/v1/all-jobs', {
+    const response = await axios.get(`${BASE_URL}/api/v1/all-jobs`, {
       withCredentials: true,
       headers : {
         Accept: 'application/json',

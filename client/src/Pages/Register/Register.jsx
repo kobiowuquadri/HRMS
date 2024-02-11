@@ -36,21 +36,30 @@ function Register () {
   const navigate = useNavigate()
 
   const handleRegister = async () => {
+    try {
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('name', name);
+      formData.append('password', password);
+      formData.append('currentJob', currentJob);
+      formData.append('jobDescription', jobDescription);
+      formData.append('qualification', qualification);
+      formData.append('phoneNumber', phoneNumber);
+      formData.append('path', path); 
+      formData.append('DOB', DOB);
   
-    await userRegister({
-      email,
-      name,
-      password,
-      currentJob,
-      jobDescription,
-      qualification,
-      phoneNumber,
-      path,
-      DOB
-    })
-    toast.success("Registration Successfully")
-    navigate('/login')
-  }
+      const response = await userRegister(formData);
+      console.log(formData)
+      console.log(response.data);
+      toast.success("Registration Successfully");
+      navigate('/login');
+    } catch (error) {
+      console.error('Registration failed', error);
+      toast.error('Registration Failed');
+    }
+  };
+  
+  
 
   return (
     <MDBContainer

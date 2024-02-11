@@ -27,9 +27,11 @@ function UserContextProvider ({ children }) {
     }
   }, [])
 
+  const BASE_URL = 'http://localhost:5000'
+
   const logout = async () => {
     try {
-      await axios.post('https://hrms-server-gilt.vercel.app/api/v1/user-logout', null, {
+      await axios.post(`${BASE_URL}/api/v1/user-logout`, null, {
         withCredentials: true
       })
       setAuthUser(null)
@@ -40,7 +42,7 @@ function UserContextProvider ({ children }) {
   }
   const logoutAdmin = async () => {
     try {
-      await axios.post('https://hrms-server-gilt.vercel.app/api/v1/admin-logout', null, {
+      await axios.post(`${BASE_URL}/api/v1/admin-logout`, null, {
         withCredentials: true
       })
       setAuthAdmin(null)
