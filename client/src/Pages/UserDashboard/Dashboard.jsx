@@ -20,34 +20,33 @@ import {
 import UserContext from '../../Context/userContext'
 import profileImage from '../../Assets/Images/profileImage.png'
 import { TypeAnimation } from 'react-type-animation'
-import { Outlet, Link } from 'react-router-dom';
-
+import { Outlet, Link } from 'react-router-dom'
 
 function Dashboard () {
   const { user } = useContext(UserContext)
   console.log(user)
-  
 
   return (
     <div className='board'>
       <Sidebar />
       <div className='main__board'>
         <div className='d-flex justify-content-between align-items-center'>
-          <h1 className='text-white py-2'>Hey, Welcome
-          <TypeAnimation
-                sequence={[
-                   " " + user.name + "!",
-                  1000,
-                  " ",
-                  2000
-                ]}
-                wrapper='span'
-                cursor={true}
-                repeat={Infinity}
-                style={{ color: '#fff', textAlign: 'center' }}
-              />
+          <h1 className='text-white py-2'>
+            Hey, Welcome
+            <TypeAnimation
+              sequence={[' ' + user.name + '!', 1000, ' ', 2000]}
+              wrapper='span'
+              cursor={true}
+              repeat={Infinity}
+              style={{ color: '#fff', textAlign: 'center' }}
+            />
           </h1>
-          <Link to={`/dashboard/update-profile/${user._id}`} className="btn btn-primary">Update Profile</Link>
+          <Link
+            to={`/dashboard/update-profile/${user._id}`}
+            className='btn btn-primary'
+          >
+            Update Profile
+          </Link>
         </div>
         <section style={{ backgroundColor: '#eee' }}>
           <MDBContainer className='py-5'>
@@ -70,16 +69,20 @@ function Dashboard () {
                 <MDBCard className='mb-4'>
                   <MDBCardBody className='text-center'>
                     <MDBCardImage
-                      src={profileImage}
+                      src={`http://localhost:5000/${user.path}`}
                       alt='avatar'
                       className='rounded-circle'
-                      style={{ width: '150px' }}
+                      style={{
+                        width: '200px',
+                        height: '200px',
+                        objectFit: 'cover'
+                      }}
                       fluid
                     />
+
+                    {/* <p>{`http://localhost:5000/uploads/${user.path}`}</p> */}
                     <p className='text-muted mb-1'>{user.currentJob}</p>
-                    <p className='text-muted mb-4'>
-                      House 10, Canada Ontario.
-                    </p>
+                    <p className='text-muted mb-4'>House 10, Canada Ontario.</p>
                     {/* <div className='d-flex justify-content-center mb-2'>
                       <MDBBtn>Follow</MDBBtn>
                       <MDBBtn outline className='ms-1'>
