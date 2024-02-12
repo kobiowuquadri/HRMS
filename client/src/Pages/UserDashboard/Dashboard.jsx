@@ -69,7 +69,7 @@ function Dashboard () {
                 <MDBCard className='mb-4'>
                   <MDBCardBody className='text-center'>
                     <MDBCardImage
-                      src={`http://localhost:5000/${user.path}`}
+                      src={`https://hrms-server-gilt.vercel.app/${user.path}`}
                       alt='avatar'
                       className='rounded-circle'
                       style={{
