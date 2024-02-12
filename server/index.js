@@ -11,11 +11,9 @@ const path = require('path');
 
 const port = process.env.PORT
 
-const BASE_URL = 'https://hrms-client-self.vercel.app';
-
 // Middlewares
 app.use(cors({
-    origin: `${BASE_URL}`,
+    origin: "https://hrms-client-self.vercel.app",
     credentials: true
 }))
 app.use(express.json())
