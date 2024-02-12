@@ -27,16 +27,6 @@ function Apply () {
 
   const navigate = useNavigate()
 
-  // useEffect(async () => {
-  //   // Fetch the user token from localStorage or wherever you store it
-  //   const userToken = localStorage.getItem('userToken')
-
-  //   if (userToken) {
-  //     const decodedToken = await jwt.decode(userToken)
-  //     setUserId(decodedToken.id)
-  //   }
-  // }, []) // Run this effect once when the component mounts
-
   const userToken = JSON.parse(localStorage.getItem('userToken'))
   const handleApply = async () => {
     try {

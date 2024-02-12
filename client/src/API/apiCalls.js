@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const BASE_URL = 'http://localhost:5000'
+const BASE_URL = 'https://hrms-server-gilt.vercel.app'
 
 export const userRegister = async payload => {
   const response = await axios.post(
