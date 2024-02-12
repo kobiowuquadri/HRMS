@@ -9,7 +9,7 @@ function Team() {
   return (
     <div className='container p-5'>
       <h1 className='p-4 text-center fw-bold'>OUR TEAM</h1>
-      <div className='row row-cols-2 row-cols-lg'>
+      <div className='row row-cols-md-2 row-cols-lg'>
         {teams.map((team, index) => {
           return (
             <div
