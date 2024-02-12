@@ -11,7 +11,7 @@ const path = require('path');
 
 const port = process.env.PORT
 
-const BASE_URL = 'https://hrms-client-self.vercel.app/';
+const BASE_URL = 'https://hrms-client-self.vercel.app';
 
 // Middlewares
 app.use(cors({
