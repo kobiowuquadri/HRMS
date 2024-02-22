@@ -26,11 +26,11 @@ const handleErrors = err => {
 const userRegister = async (req, res) => {
   try {
     const image = req.file
-    if (!image) {
-      return res
-        .status(400)
-        .json({ success: false, message: "No image file provided!" })
-    }
+    // if (!image) {
+    //   return res
+    //     .status(400)
+    //     .json({ success: false, message: "No image file provided!" })
+    // }
     const {
       email,
       name,
