@@ -47,7 +47,6 @@ const userSchema = new mongoose.Schema(
     },
     path: {
       type: String,
-      required: true
     },
     appliedJobs: [
       {
