@@ -89,6 +89,7 @@ function Register () {
                     type='email'
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
+                    required
                   />
                 </div>
 
@@ -101,6 +102,7 @@ function Register () {
                     type='text'
                     onChange={(e) => setName(e.target.value)}
                     value={name}
+                    required
                   />
                 </div>
                 <div className='d-flex flex-row align-items-center mb-4'>
@@ -112,6 +114,7 @@ function Register () {
                     type='password'
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
+                    required
                   />
                 </div>
 
@@ -124,6 +127,7 @@ function Register () {
                     type='text'
                     onChange={(e) => setCurrentJob(e.target.value)}
                     value={currentJob}
+                    required
                   />
                 </div>
                 <div className='d-flex flex-row align-items-center mb-4'>
@@ -135,6 +139,7 @@ function Register () {
                     type='text'
                     onChange={(e) => setJobDescription(e.target.value)}
                     value={jobDescription}
+                    required
                   />
                 </div>
                 <div className='d-flex flex-row align-items-center mb-4'>
@@ -146,6 +151,7 @@ function Register () {
                     type='text'
                     onChange={(e) => setQualification(e.target.value)}
                     value={qualification}
+                    required
                   />
                 </div>
 
@@ -158,6 +164,7 @@ function Register () {
                     type='number'
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     value={phoneNumber}
+                    required
                   />
                 </div>
 
@@ -181,6 +188,7 @@ function Register () {
                     type='date'
                     onChange={(e) => setDOB(e.target.value)}
                     value={DOB}
+                    required
                   />
                 </div>
 
