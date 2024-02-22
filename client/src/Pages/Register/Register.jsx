@@ -26,12 +26,12 @@ function Register () {
   const [jobDescription, setJobDescription] = useState('')
   const [qualification, setQualification] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
-  const [path, setPath] = useState(null)
+  // const [path, setPath] = useState(null)
   const [DOB, setDOB] = useState('')
 
-  const handleProfileImageChange = (e) => {
-     setPath(e.target.files[0])
-  }
+  // const handleProfileImageChange = (e) => {
+  //    setPath(e.target.files[0])
+  // }
 
   const navigate = useNavigate()
 
@@ -45,7 +45,7 @@ function Register () {
       formData.append('jobDescription', jobDescription);
       formData.append('qualification', qualification);
       formData.append('phoneNumber', phoneNumber);
-      formData.append('path', path); 
+      // formData.append('path', path); 
       formData.append('DOB', DOB);
   
       const response = await userRegister(formData);
@@ -168,7 +168,7 @@ function Register () {
                   />
                 </div>
 
-                <div className='d-flex flex-row align-items-center mb-4'>
+                {/* <div className='d-flex flex-row align-items-center mb-4'>
                   <MDBIcon fas icon='lock me-3' size='lg' />
                   <MDBInput
                     label='ProfileImage'
@@ -177,7 +177,7 @@ function Register () {
                     type='file'
                     onChange={handleProfileImageChange}
                   />
-                </div>
+                </div> */}
 
                 <div className='d-flex flex-row align-items-center mb-4'>
                   <MDBIcon fas icon='lock me-3' size='lg' />
