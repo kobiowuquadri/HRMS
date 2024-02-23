@@ -44,7 +44,8 @@ function Register () {
         currentJob,
         jobDescription,
         qualification,
-        phoneNumber
+        phoneNumber,
+        DOB
       });
       console.log(response.data);
       toast.success("Registration Successfully");
