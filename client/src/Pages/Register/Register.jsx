@@ -37,19 +37,15 @@ function Register () {
 
   const handleRegister = async () => {
     try {
-      const formData = new FormData();
-      formData.append('email', email);
-      formData.append('name', name);
-      formData.append('password', password);
-      formData.append('currentJob', currentJob);
-      formData.append('jobDescription', jobDescription);
-      formData.append('qualification', qualification);
-      formData.append('phoneNumber', phoneNumber);
-      // formData.append('path', path); 
-      formData.append('DOB', DOB);
-  
-      const response = await userRegister(formData);
-      console.log(formData)
+      const response = await userRegister({
+        email,
+        name,
+        password,
+        currentJob,
+        jobDescription,
+        qualification,
+        phoneNumber
+      });
       console.log(response.data);
       toast.success("Registration Successfully");
       navigate('/login');
