@@ -18,7 +18,7 @@ import {
   MDBListGroupItem
 } from 'mdb-react-ui-kit'
 import UserContext from '../../Context/userContext'
-import profileImage from '../../Assets/Images/profileImage.png'
+import profileImage from '../../Assets/Images/profileImage-1707418520644.jpg'
 import { TypeAnimation } from 'react-type-animation'
 import { Outlet, Link } from 'react-router-dom'
 
@@ -69,7 +69,7 @@ function Dashboard () {
                 <MDBCard className='mb-4'>
                   <MDBCardBody className='text-center'>
                     <MDBCardImage
-                      src={`https://hrms-server-gilt.vercel.app/${user.path}`}
+                      src={profileImage}
                       alt='avatar'
                       className='rounded-circle'
                       style={{

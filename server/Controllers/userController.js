@@ -25,7 +25,7 @@ const handleErrors = err => {
 
 const userRegister = async (req, res) => {
   try {
-    const image = req.file
+    // const image = req.file
     // if (!image) {
     //   return res
     //     .status(400)
@@ -60,7 +60,6 @@ const userRegister = async (req, res) => {
       qualification,
       DOB,
       phoneNumber,
-      path: image.path.replace(/\\/g, "/").replace("public/", "")
     })
     const savedUser = await newUser.save()
 
@@ -76,16 +75,22 @@ const userRegister = async (req, res) => {
       from: 'kobiowuq@gmail.com'
     })
 
-    const info = await transporter.sendMail({
-      from: '"DHireventures 👻" <kobiowuq@gmail.com>', // sender address
-      to: email, // list of receivers
-      subject: 'Account Created Successfully', // Subject line
-      html: `
-      <p>Hello ${name},</p>
-      <p>Your account has been created successfully.</p>
-      <p>So, you can now proceed with other processes</p>
+const info = await transporter.sendMail({
+  from: '"DeHireventures Team 👻" <kobiowuq@gmail.com>',
+  to: email,
+  subject: 'Welcome to DeHireventures',
+  html: `
+  <p>Hello ${name},</p>
+  <p>Welcome to DeHireventures, where we redefine the future of hiring and job hunting through innovation, efficiency, and seamless user experiences.</p>
+  <p>We are thrilled to inform you that your account has been successfully created. You can now access our platform and explore the plethora of opportunities waiting for you.</p>
+  <p>To get started, please visit our login page:</p>
+  <p><a href="https://hrms-client-self.vercel.app/login">Login to DeHireventures</a></p>
+  <p>If you have any questions or need assistance, feel free to reach out to our support team. We are here to help you at every step of your journey.</p>
+  <p>Thank you for choosing DeHireventures. We look forward to helping you achieve your career goals!</p>
+  <p>Best regards,<br/>The DeHireventures Team</p>
   `
-    })
+})
+
 
     console.log('Message sent: %s', info.messageId)
 

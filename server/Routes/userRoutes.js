@@ -6,7 +6,7 @@ const upload = require('../Middlewares/uploadProfile')
 
 // Routes
 // User register
-userRouter.post('/user-register', upload.single('path'), userRegister)
+userRouter.post('/user-register', userRegister)
 // User login
 userRouter.post('/user-login', userLogin)
 

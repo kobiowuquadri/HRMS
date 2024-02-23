@@ -45,9 +45,6 @@ const userSchema = new mongoose.Schema(
       type: Number,
       required: [true, 'Please enter a phone number']
     },
-    path: {
-      type: String,
-    },
     appliedJobs: [
       {
         job: {
