@@ -25,12 +25,6 @@ const handleErrors = err => {
 
 const userRegister = async (req, res) => {
   try {
-    // const image = req.file
-    // if (!image) {
-    //   return res
-    //     .status(400)
-    //     .json({ success: false, message: "No image file provided!" })
-    // }
     const {
       email,
       name,
@@ -59,7 +53,7 @@ const userRegister = async (req, res) => {
       jobDescription,
       qualification,
       DOB,
-      phoneNumber,
+      phoneNumber
     })
     const savedUser = await newUser.save()
 
@@ -75,11 +69,11 @@ const userRegister = async (req, res) => {
       from: 'kobiowuq@gmail.com'
     })
 
-const info = await transporter.sendMail({
-  from: '"DeHireventures Team 👻" <kobiowuq@gmail.com>',
-  to: email,
-  subject: 'Welcome to DeHireventures',
-  html: `
+    const info = await transporter.sendMail({
+      from: '"DeHireventures Team 👻" <kobiowuq@gmail.com>',
+      to: email,
+      subject: 'Welcome to DeHireventures',
+      html: `
   <p>Hello ${name},</p>
   <p>Welcome to DeHireventures, where we redefine the future of hiring and job hunting through innovation, efficiency, and seamless user experiences.</p>
   <p>We are thrilled to inform you that your account has been successfully created. You can now access our platform and explore the plethora of opportunities waiting for you.</p>
@@ -89,8 +83,7 @@ const info = await transporter.sendMail({
   <p>Thank you for choosing DeHireventures. We look forward to helping you achieve your career goals!</p>
   <p>Best regards,<br/>The DeHireventures Team</p>
   `
-})
-
+    })
 
     console.log('Message sent: %s', info.messageId)
 
