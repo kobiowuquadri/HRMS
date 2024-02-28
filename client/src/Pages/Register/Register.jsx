@@ -139,6 +139,7 @@ function Register () {
                     type='text'
                     onChange={(e) => setQualification(e.target.value)}
                     value={qualification}
+                    required
                   />
                 </div>
 
@@ -151,6 +152,7 @@ function Register () {
                     type='date'
                     onChange={(e) => setDOB(e.target.value)}
                     value={DOB}
+                    required
                   />
                 </div>
 
@@ -163,8 +165,10 @@ function Register () {
                     type='number'
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     value={phoneNumber}
+                    required
                   />
                 </div>
+
 
                 <MDBBtn
                   className='mb-4'
