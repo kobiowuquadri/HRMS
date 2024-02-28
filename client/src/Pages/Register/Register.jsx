@@ -25,13 +25,9 @@ function Register () {
   const [currentJob, setCurrentJob] = useState('')
   const [jobDescription, setJobDescription] = useState('')
   const [qualification, setQualification] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  // const [path, setPath] = useState(null)
   const [DOB, setDOB] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
 
-  // const handleProfileImageChange = (e) => {
-  //    setPath(e.target.files[0])
-  // }
 
   const navigate = useNavigate()
 
@@ -44,8 +40,8 @@ function Register () {
         currentJob,
         jobDescription,
         qualification,
-        phoneNumber,
-        DOB
+        DOB,
+        phoneNumber
       });
       console.log(response.data);
       toast.success("Registration Successfully");
@@ -86,7 +82,6 @@ function Register () {
                     type='email'
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
-                    required
                   />
                 </div>
 
@@ -99,7 +94,6 @@ function Register () {
                     type='text'
                     onChange={(e) => setName(e.target.value)}
                     value={name}
-                    required
                   />
                 </div>
                 <div className='d-flex flex-row align-items-center mb-4'>
@@ -111,7 +105,6 @@ function Register () {
                     type='password'
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
-                    required
                   />
                 </div>
 
@@ -124,7 +117,6 @@ function Register () {
                     type='text'
                     onChange={(e) => setCurrentJob(e.target.value)}
                     value={currentJob}
-                    required
                   />
                 </div>
                 <div className='d-flex flex-row align-items-center mb-4'>
@@ -136,7 +128,6 @@ function Register () {
                     type='text'
                     onChange={(e) => setJobDescription(e.target.value)}
                     value={jobDescription}
-                    required
                   />
                 </div>
                 <div className='d-flex flex-row align-items-center mb-4'>
@@ -148,7 +139,18 @@ function Register () {
                     type='text'
                     onChange={(e) => setQualification(e.target.value)}
                     value={qualification}
-                    required
+                  />
+                </div>
+
+                <div className='d-flex flex-row align-items-center mb-4'>
+                  <MDBIcon fas icon='lock me-3' size='lg' />
+                  <MDBInput
+                    label='Date of Birth'
+                    name='DOB'
+                    id='form3'
+                    type='date'
+                    onChange={(e) => setDOB(e.target.value)}
+                    value={DOB}
                   />
                 </div>
 
@@ -161,31 +163,6 @@ function Register () {
                     type='number'
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     value={phoneNumber}
-                    required
-                  />
-                </div>
-
-                {/* <div className='d-flex flex-row align-items-center mb-4'>
-                  <MDBIcon fas icon='lock me-3' size='lg' />
-                  <MDBInput
-                    label='ProfileImage'
-                    name='path'
-                    id='form3'
-                    type='file'
-                    onChange={handleProfileImageChange}
-                  />
-                </div> */}
-
-                <div className='d-flex flex-row align-items-center mb-4'>
-                  <MDBIcon fas icon='lock me-3' size='lg' />
-                  <MDBInput
-                    label='Date of Birth'
-                    name='DOB'
-                    id='form3'
-                    type='date'
-                    onChange={(e) => setDOB(e.target.value)}
-                    value={DOB}
-                    required
                   />
                 </div>
 
@@ -206,7 +183,6 @@ function Register () {
               lg='6'
               className='order-1 order-lg-2 d-flex align-items-center'
             >
-              {/* <MDBCardImage src={loginBg} fluid /> */}
             </MDBCol>
           </MDBRow>
         </MDBCardBody>
